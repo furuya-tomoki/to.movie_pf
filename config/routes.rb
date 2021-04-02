@@ -1,57 +1,34 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'favorites/create'
-    get 'favorites/destroy'
-  end
-  namespace :admin do
-    get 'movie_comments/show'
-    get 'movie_comments/update'
-    get 'movie_comments/index'
-    get 'movie_comments/edit'
-    get 'movie_comments/destory'
-    get 'movie_comments/create'
-  end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-  end
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/create'
-    get 'genres/edit'
-    get 'genres/update'
-  end
-  get 'admin/movies'
-  get 'admin/index'
-  get 'admin/new'
-  get 'admin/create'
-  get 'admin/show'
-  get 'admin/edit'
-  get 'admin/update'
-  get 'relationships/create'
-  get 'relationships/destroy'
-  get 'relationships/followings'
-  get 'relationships/followers'
-  get 'favorites/create'
-  get 'favorites/destroy'
-  get 'movie_comments/show'
-  get 'movie_comments/update'
-  get 'movie_comments/index'
-  get 'movie_comments/edit'
-  get 'movie_comments/destroy'
-  get 'movie_comments/create'
-  get 'customers/show'
-  get 'customers/edit'
-  get 'customers/update'
-  get 'customers/withdrawal'
-  get 'movies/index'
-  get 'movies/show'
-  get 'homes/top'
-  get 'homes/about'
+
   devise_for :admins
+
+  namespace :admin do
+  root 'hoems#top'
+  resources :movies, only: [:index, :new, :create, :show, :edit, :update]
+  resources :genres, only: [:index, :create, :edit, :update]
+  resources :customers, only: [:index, :show, :edit, :update]
+  resources :movie_comments, only: [:show, :update, :index, :edit, :destroy, :create]
+  resources :favorites, only: [:create, :destroy]
+  end
+
+
+  scope module: :public do
+    root 'homes#top'
+    resources :movies, only: [:index, :show]
+    resources :movie_comments, only: [:show, :update, :index, :edit, :destroy, :create]
+    resource :relationships, only: [:create, :destroy]
+  	get 'followings' => 'relationships#followings', as: 'followings'
+  	get 'followers' => 'relationships#followers', as: 'followers'
+    resources :customers, only: [:show, :edit, :update] do
+      member do
+        patch 'withdrawal'
+        get 'unsubscribe'
+      end
+    end
+
+  end
+
   devise_for :customers
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'homes#top'
+
 end
