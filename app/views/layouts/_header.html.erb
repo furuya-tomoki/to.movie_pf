@@ -1,7 +1,8 @@
 <header>
+
       <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container">
-          <a class="navbar-brand " href="/"><h1 class="fas fa-birthday-cake"></h1></a>
+          <a class="navbar-brand " href="/">to.movie</h1></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarLinks" aria-controls="navbarLinks" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -19,7 +20,7 @@
                   <%= link_to "映画一覧", class: "btn btn-outline" %>
                 </li>
                <li class="border border-dark rounded" style="padding:10px; margin:10px;">
-                  <%= link_to "About", class: "btn btn-outline" %>
+                  <%= link_to "About", hoems_about_path, class: "btn btn-outline" %>
                 </li>
                 <li class="border border-dark rounded" style="padding:10px; margin:10px;">
                   <%= link_to "マイページ", class: "btn btn-outline" %>
@@ -50,7 +51,7 @@
                 <!-- 会員・管理者がログアウト時 -->
               <% else %>
                  <li class="border border-dark rounded text-dark" style= "padding:10px; margin:10px;">
-                   <%= link_to "About", class: "btn btn-outline" %>
+                   <%= link_to "About", homes_about_path, class: "btn btn-outline" %>
                 </li>
                  <li class="border border-dark rounded text-dark" style= "padding:10px; margin:10px;">
                   <%= link_to "　作品一覧", class: "btn btn-outline" %>

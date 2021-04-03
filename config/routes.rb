@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
-  devise_for :admins
+  devise_for :admins, controllers: {
+    sessions: 'admins/sessions',
+    passwords: 'admins/sessions',
+    registrations: 'admins/registrations',
+  }
+# devise customersと被らないよう指定
 
   namespace :admin do
   root 'hoems#top'
@@ -10,10 +15,15 @@ Rails.application.routes.draw do
   resources :movie_comments, only: [:show, :update, :index, :edit, :destroy, :create]
   resources :favorites, only: [:create, :destroy]
   end
-
+devise_for :customers, controllers: {
+    sessions: 'customers/sessions',
+    passwords: 'customers/sessions',
+    registrations: 'customers/registrations',
+}
 
   scope module: :public do
     root 'homes#top'
+    get 'homes/about' => 'homes#about'
     resources :movies, only: [:index, :show]
     resources :movie_comments, only: [:show, :update, :index, :edit, :destroy, :create]
     resource :relationships, only: [:create, :destroy]
@@ -28,7 +38,7 @@ Rails.application.routes.draw do
 
   end
 
-  devise_for :customers
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 end
