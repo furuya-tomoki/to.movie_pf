@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   namespace :admin do
   root 'hoems#top'
   resources :movies, only: [:index, :new, :create, :show, :edit, :update]
-  resources :genres, only: [:index, :create, :edit, :update]
+  resources :genres, only: [:index, :create, :edit, :update, :destroy]
   resources :customers, only: [:index, :show, :edit, :update]
   resources :movie_comments, only: [:show, :update, :index, :edit, :destroy, :create]
   resources :favorites, only: [:create, :destroy]

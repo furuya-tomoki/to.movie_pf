@@ -1,6 +1,7 @@
 class Admin::MoviesController < ApplicationController
 
  def index
+  @movies = Movie.all
  end
 
  def new
@@ -8,7 +9,7 @@ class Admin::MoviesController < ApplicationController
  end
 
  def create
-  @movie = Movie.find(params[:id])
+  @movie = Movie.new(movie_params)
   @movie.save!
   redirect_to root_path
  end
@@ -18,7 +19,7 @@ class Admin::MoviesController < ApplicationController
  end
 
  def edit
-   @movie = Movie.find(params[:id])
+  @movie = Movie.find(params[:id])
  end
 
  def update

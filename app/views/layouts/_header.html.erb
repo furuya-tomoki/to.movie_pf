@@ -17,7 +17,7 @@
                 ようこそ、<%= current_customer.last_name %>さん！
               </li>
                 <li class="border border-dark rounded" style= "padding:10px; margin:10px;">
-                  <%= link_to "映画一覧", class: "btn btn-outline" %>
+                  <%= link_to "作品一覧", class: "btn btn-outline" %>
                 </li>
                <li class="border border-dark rounded" style="padding:10px; margin:10px;">
                   <%= link_to "About", hoems_about_path, class: "btn btn-outline" %>
@@ -33,7 +33,7 @@
               <% elsif admin_signed_in? %>
 
                 <li class="border border-dark rounded text-dark" style= "padding:10px; margin:10px;">
-                   <%= link_to "作品一覧", class: "btn btn-outline" %>
+                   <%= link_to "作品一覧", admin_movie_path, class: "btn btn-outline" %>
 
                 </li>
                 <li class="border border-dark rounded text-dark" style= "padding:10px; margin:10px;">

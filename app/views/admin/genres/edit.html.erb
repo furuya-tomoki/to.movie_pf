@@ -1,2 +1,14 @@
-<h1>Admin::Genres#edit</h1>
-<p>Find me in app/views/admin/genres/edit.html.erb</p>
+<div class="container">
+
+  <h4 class="py-3">ジャンル編集</h4>
+
+  <%= form_for @genre, url: admin_genre_path(@genre.id) do |f| %>
+  <table>
+    <tr>
+      <th class="pr-5">ジャンル名</th>
+      <td><%= f.text_field :name, class: "form-control name" %></td>
+      <td><%= f.submit "変更を保存", class: "btn btn-success px-3 mx-5" %></td>
+    </tr>
+  </table>
+  <% end %>
+</div>
