@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_03_100521) do
+ActiveRecord::Schema.define(version: 2021_04_04_110159) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2021_04_03_100521) do
   create_table "movies", force: :cascade do |t|
     t.integer "customer_id"
     t.integer "genre_id"
-    t.integer "image_id"
+    t.string "image_id"
     t.string "title"
     t.string "director"
     t.string "actor"

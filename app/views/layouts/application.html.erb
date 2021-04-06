@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ToMovie</title>
+    <title>to.movie</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -9,8 +9,11 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+   <main>
   <body>
     <%= render "layouts/header" %>
     <%= yield %>
   </body>
+  </main>
+  <%= render "layouts/footer" %>
 </html>
