@@ -1,2 +1,21 @@
-<h1>Admin#show</h1>
-<p>Find me in app/views/admin/show.html.erb</p>
+<h2>作品詳細</h2>
+
+<h4>ジャンル</h4>
+<%= @movie.genre.name %>
+
+<h4>作品名</h4>
+<%= @movie.title %>
+
+<h4>作品画像</h4>
+<%= attachment_image_tag(@movie, :image, size: "320×240", fallback: "no_image.jpg") %>
+
+<h4>監督名</h4>
+<%= @movie.director %>
+
+<h4>主演</h4>
+<%= @movie.actor %>
+
+<h4>あらすじ</h4>
+<%= @movie.explain %>
+
+<%= link_to "編集する", edit_admin_movie_path(@movie), class: "btn btn-success" %>
