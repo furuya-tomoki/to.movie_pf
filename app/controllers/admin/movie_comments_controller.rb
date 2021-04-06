@@ -1,21 +1,12 @@
 class Admin::MovieCommentsController < ApplicationController
 
-  def show
-  end
-
-  def update
-  end
-
-  def index
-  end
-
-  def edit
+  def create
   end
 
   def destroy
-  end
-
-  def create
+  @movie_comment = MovieComment.find(params[:id])
+  @movie_comment.destroy
+  redirect_to admin_movie_path
   end
 
 end
