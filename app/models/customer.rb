@@ -16,7 +16,7 @@ class Customer < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
      # 与フォロー関係を通じて参照→自分がフォローしている人
   attachment :image
-  validates :last_name, presence: true
+  validates :name, presence: true
   def follow(customer_id)
    relationships.create(followed_id: customer_id)
   end
