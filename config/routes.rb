@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 # devise customersと被らないよう指定
 
   namespace :admin do
-  root 'hoems#top'
+  root 'homes#top'
   resources :movies, only: [:index, :new, :create, :show, :edit, :update]
   resources :genres, only: [:index, :create, :edit, :update, :destroy]
   resources :customers, only: [:index, :show, :edit, :update]
@@ -23,10 +23,11 @@ Rails.application.routes.draw do
     resources :movie_comments, only: [:destroy, :create]
     resource :favorites, only: [:create, :destroy]
   end
-    resource :relationships, only: [:create, :destroy]
+
+    resource :customers, only: [:show, :edit, :update] do
+      resource :relationships, only: [:create, :destroy]
   	get 'followings' => 'relationships#followings', as: 'followings'
   	get 'followers' => 'relationships#followers', as: 'followers'
-    resource :customers, only: [:show, :edit, :update] do
       member do
         patch 'withdrawal'
         get 'unsubscribe'

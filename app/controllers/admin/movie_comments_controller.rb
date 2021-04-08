@@ -1,5 +1,6 @@
 class Admin::MovieCommentsController < ApplicationController
 
+
   def create
   end
 

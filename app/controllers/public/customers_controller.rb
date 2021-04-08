@@ -17,8 +17,6 @@ class Public::CustomersController < ApplicationController
     end
   end
 
-
-
   def withdrawal
     @customer = current_customer
     @customer.update(is_valid: false)

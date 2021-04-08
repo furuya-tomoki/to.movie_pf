@@ -1,5 +1,6 @@
 class Admin::FavoritesController < ApplicationController
 
+
   def create
   end
 
