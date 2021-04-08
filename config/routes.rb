@@ -23,10 +23,12 @@ Rails.application.routes.draw do
     resources :movie_comments, only: [:destroy, :create]
     resource :favorites, only: [:create, :destroy]
   end
+
+
+  resource :customers, only: [:show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
   	get 'followings' => 'relationships#followings', as: 'followings'
   	get 'followers' => 'relationships#followers', as: 'followers'
-    resource :customers, only: [:show, :edit, :update] do
       member do
         patch 'withdrawal'
         get 'unsubscribe'
