@@ -16,6 +16,12 @@ Rails.application.routes.draw do
   resources :favorites, only: [:create, :destroy]
   end
 
+
+devise_for :customers, controllers: {
+    sessions: 'customers/sessions',
+    passwords: 'customers/sessions',
+    registrations: 'customers/registrations',
+}
   scope module: :public do
     root 'homes#top'
     get 'homes/about' => 'homes#about'
@@ -24,10 +30,9 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
 
-
-    resource :customers, only: [:show, :edit, :update] do
+    resources :customers, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
-
+    get 'mypage' => 'customers#mypage', as: 'mypage'
   	get 'followings' => 'relationships#followings', as: 'followings'
   	get 'followers' => 'relationships#followers', as: 'followers'
       member do
@@ -36,11 +41,7 @@ Rails.application.routes.draw do
       end
     end
   end
-devise_for :customers, controllers: {
-    sessions: 'customers/sessions',
-    passwords: 'customers/sessions',
-    registrations: 'customers/registrations',
-}
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

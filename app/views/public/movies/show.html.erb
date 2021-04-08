@@ -1,6 +1,5 @@
 <div class="container">
   <div class="row">
-
 <div class="col-md-8 col-lg-3 px-5 m-5">
 <%= attachment_image_tag(@movie, :image, size: "150×200", fallback: "no_image.jpg") %>
 <%= @movie.title %>
@@ -26,25 +25,21 @@
 
 <h4>ジャンル</h4>
 <%= @movie.genre.name %>
-
 <h4>作品名</h4>
 <%= @movie.title %>
-
-
 <h4>監督名</h4>
 <%= @movie.director %>
-
 <h4>主演</h4>
 <%= @movie.actor %>
-
 <h4>あらすじ</h4>
 <%= @movie.explain %>
+
 
 <div class="comments">
 <p>コメント件数：<%= @movie.movie_comments.count %></p>
 <% @movie.movie_comments.each do |movie_comment| %>
   <p><%= image_tag('no_image.jpg') %></p>
-  <%= link_to movie_comment.customer.name, customers_path(@customer) %>
+  <%= link_to movie_comment.customer.name, customer_path(@customer) %>
   <%= movie_comment.created_at.strftime('%Y/%m/%d') %>
   <%= movie_comment.comment %>
   <% if movie_comment.customer == current_customer %>
@@ -54,6 +49,8 @@
   <% end %>
 <% end %>
 </div>
+
+
 <%= form_with model:[@movie, @movie_comment], local: true do |f| %>
   <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
   <%= f.submit "送信する" %>

@@ -12,7 +12,7 @@
 <%= f.attachment_field :image, class: "customer_image" %>
 
 <%= f.submit "保存する", class:"btn btn-success" %>
-<%= link_to "退会する", unsubscribe_customers_path, method: :get, class:"btn btn-danger" %>
+<%= link_to "退会する", unsubscribe_customer_path, method: :get, class:"btn btn-danger" %>
 
 
 <% end %>
