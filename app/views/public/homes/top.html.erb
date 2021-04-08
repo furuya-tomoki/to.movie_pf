@@ -1,11 +1,25 @@
-<div class="jumbotron text-center hero">
+<div class="hero"></div>
 
-  <div class="container">
-<div style="padding: 10px; margin-bottom: 10px; border: 5px double #333333; border-radius: 10px; background-color: #ffff99;">
-<p>
-<h1>to.movie</h1><br>
-</p>
+<div class="container">
+<h3 class="text-center"><strong>新着作品</strong></h3>
+  <div class="row">
+    <% @movies.each do |movie| %>
+    <div class="col-md-3">
+      <%= link_to attachment_image_tag(movie, :image, format: 'jpeg', size: "150x200", fallback: "no_image.jpg"), movie_path(movie) %>
+      <p class="text-left">
+      <%= movie.title %>
+      <p class="text-left">
+      <%= link_to "#{movie.movie_comments.count}コメント", movie_path(movie.id) %>
+
+      </p>
+      </p>
+    </div>
+    <% end %>
+
+
+  </div>
 </div>
-   </div>
-</div>
-<h3 class="text-center"><strong>新着映画</strong> </h3>
+
+
+
+<%= paginate @movies %>

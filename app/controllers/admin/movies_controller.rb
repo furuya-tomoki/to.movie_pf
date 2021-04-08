@@ -1,4 +1,6 @@
 class Admin::MoviesController < ApplicationController
+before_action :authenticate_admin!
+
 
  def index
   @movies = Movie.all
@@ -11,7 +13,7 @@ class Admin::MoviesController < ApplicationController
  def create
   @movie = Movie.new(movie_params)
   @movie.save!
-  redirect_to root_path
+  redirect_to admin_movies_path
  end
 
  def show
@@ -23,6 +25,12 @@ class Admin::MoviesController < ApplicationController
  end
 
  def update
+  @movie = Movie.find(params[:id])
+  if @movie.update(movie_params)
+   redirect_to admin_movie_path(@movie)
+  else
+   render "edit"
+  end
  end
 
 

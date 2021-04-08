@@ -16,16 +16,16 @@ class Customer < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
      # 与フォロー関係を通じて参照→自分がフォローしている人
   attachment :image
-
-  def follow(user_id)
-   relationships.create(followed_id: user_id)
+  validates :name, presence: true
+  def follow(customer_id)
+   relationships.create(followed_id: customer_id)
   end
 
-  def unfollow(user_id)
-    relationships.find_by(followed_id: user_id).destroy
+  def unfollow(customer_id)
+    relationships.find_by(followed_id: customer_id).destroy
   end
 
-  def following?(user)
-    followings.include?(user)
+  def following?(customer)
+    followings.include?(customer)
   end
 end

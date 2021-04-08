@@ -1,8 +1,38 @@
-<h2>マイページ</h2>
+<div class="container">
+ <div class="row my-3">
+  <div class="ml-5 pl-4">
+    <h3 style="background:#DDDDDD">会員情報</h3>
+  </div>
+ </div>
+ <div class="row">
+  <div class="col-md-3 text-left">
+    <table class="table table-borderless">
+     <tr>
+       <th>
+          <span class="mr-3">会員情報</span>
 
-<h4>アイコン</h4>
-　<%= attachment_image_tag(@customer, :image, size: "340x240", fallback: "no_image.jpg" ) %>
+          <span class=ml-3><%= link_to '編集する', edit_customers_path(@customer), class: "btn btn-success" %></span>
+       </th>
+     </tr>
+   </table>
+  </div>
+ </div>
 
-<h4>名前</h4>
-<%= @customer.name %>
-<%= link_to '編集する', edit_customers_path(@customer), class: "btn btn-success" %>
+  <div class="row">
+  <div class="col-md-7">
+   <table class="table table-bordered">
+    <tbody>
+
+      <tr>
+        <th class="table-secondary">アイコン</th>
+        <td><%= attachment_image_tag(@customer, :image, size: "340x240", fallback: "no_image.jpg" ) %></td>
+      </tr>
+      <tr>
+        <th class="table-secondary">名前</th>
+        <td><%= @customer.name %></td>
+      </tr>
+      <%= render 'public/customers/follow', customer: @customer %>
+    </tbody>
+  </div>
+ </div>
+

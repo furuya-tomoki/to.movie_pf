@@ -1,13 +1,13 @@
 class Public::RelationshipsController < ApplicationController
-  before_action :authenticate_customer
+  before_action :authenticate_customer!
   def create
-    current_customer.follow(params[:id])
+    current_customer.follow(params[:customer_id])
     redirect_to request.referer
     # 遷移前のURL取得
   end
 
   def destroy
-    current_customer.unfollow(params[:id])
+    current_customer.unfollow(params[:customer_id])
     redirect_to request.referer
   end
 
