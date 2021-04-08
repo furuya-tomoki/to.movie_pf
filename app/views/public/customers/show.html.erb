@@ -11,7 +11,7 @@
        <th>
           <span class="mr-3">会員情報</span>
 
-          <span class=ml-3><%= link_to '編集する', edit_customers_path(@customer), class: "btn btn-success" %></span>
+          <span class=ml-3><%= link_to '編集する', edit_customer_path(@customer), class: "btn btn-success" %></span>
        </th>
      </tr>
    </table>
@@ -27,11 +27,17 @@
         <th class="table-secondary">アイコン</th>
         <td><%= attachment_image_tag(@customer, :image, size: "340x240", fallback: "no_image.jpg" ) %></td>
       </tr>
+
       <tr>
         <th class="table-secondary">名前</th>
         <td><%= @customer.name %></td>
       </tr>
-      <%= render 'public/customers/follow', customer: @customer %>
+
+      <tr>
+       <th class="table-secondary">フォロー</th>
+      <td><%= render 'public/customers/follow', customer: @customer %></td>
+      </tr>
+
     </tbody>
   </div>
  </div>
