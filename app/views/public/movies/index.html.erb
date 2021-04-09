@@ -1,3 +1,10 @@
+<%= search_form_for @q do |f| %>
+  <%= f.label :title, "タイトル・キャスト名" %>
+  <%= f.search_field :title_or_actor_cont %>
+
+  <%= f.submit "検索" %>
+<% end %>
+
 <div class="container">
 <h4>作品一覧</h4>
 
@@ -16,4 +23,4 @@
   </div>
 
 
-  <%= paginate @movies %>
+  <!--%= paginate @movies %>-->

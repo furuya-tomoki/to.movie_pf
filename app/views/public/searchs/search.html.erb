@@ -1,0 +1,7 @@
+<% if @search_movies.any? %>
+<% @search_movies.each do |result| %>
+<%= link_to result.title, movie_path(result.id) %>
+<% end %>
+<% else %>
+<h1>キーワードを含むユーザーを検索できませんでした</h1>
+<% end %>

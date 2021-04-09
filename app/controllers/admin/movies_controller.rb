@@ -4,6 +4,8 @@ before_action :authenticate_admin!
 
  def index
   @movies = Movie.all
+  @q = Movie.ransack(params[:q])
+    @movies = @q.result(didtinct: true)
  end
 
  def new
