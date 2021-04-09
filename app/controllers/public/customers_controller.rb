@@ -1,17 +1,17 @@
 class Public::CustomersController < ApplicationController
 
   def show
-    @customer = current_customer
+   @customer = Customer.find(params[:id])
   end
 
   def edit
-    @customer = current_customer
+    @customer = Customer.find(params[:id])
   end
 
   def update
-    @customer = current_customer
+    @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      redirect_to customers_path
+      redirect_to customer_path
     else
       render :edit
     end
@@ -20,7 +20,7 @@ class Public::CustomersController < ApplicationController
 
 
   def withdrawal
-    @customer = current_customer
+   @customer = Customer.find(params[:id])
     @customer.update(is_valid: false)
     reset_session
     # sessionの情報削除
@@ -28,7 +28,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def unsubscribe
-    @customer = Customer.find_by(params[:id])
+    @customer = Customer.find(params[:id])
   end
 
   private

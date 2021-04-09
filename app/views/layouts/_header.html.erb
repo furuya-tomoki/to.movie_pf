@@ -2,7 +2,7 @@
 
       <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container">
-          <a class="navbar-brand " href="/">to.movie</h1></a>
+          <a class="navbar-brand " href="/"><%= image_tag 'to.movie.jpg', class: 'icon' %></h1></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarLinks" aria-controls="navbarLinks" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -12,8 +12,6 @@
 
 　　　　　　<!-- 会員がログイン時 -->
               <% if customer_signed_in? %>
-
-
                 <li class="border border-dark rounded" style= "padding:10px; margin:10px;">
                   <%= link_to "作品一覧", movies_path, class: "btn btn-outline" %>
                 </li>
@@ -21,7 +19,7 @@
                   <%= link_to "About", homes_about_path, class: "btn btn-outline" %>
                 </li>
                 <li class="border border-dark rounded" style="padding:10px; margin:10px;">
-                  <%= link_to "マイページ", customers_path, class: "btn btn-outline" %>
+                  <%= link_to "マイページ", customer_path(current_customer), class: "btn btn-outline" %>
                 </li>
                 <li class="border border-dark rounded" style="padding:10px; margin:10px;">
                   <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-outline" %>

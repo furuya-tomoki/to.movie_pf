@@ -2,7 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .hero {
-  background: image-url('movie.jpg') center top;
-  background-size: auto;
-  color: navy;
+  height: 100vh; /* 全画面表示 */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-image: url(jakob.jpg);
+}
+
+.icon{
+  width: 200px;
+  height: 80px;
 }

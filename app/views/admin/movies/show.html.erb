@@ -7,7 +7,7 @@
 <%= @movie.title %>
 
 <h4>作品画像</h4>
-<%= attachment_image_tag(@movie, :image, size: "320×240", fallback: "no_image.jpg") %>
+<%= attachment_image_tag(@movie, :image, size: "150×200", fallback: "no_image.jpg") %>
 
 <h4>監督名</h4>
 <%= @movie.director %>
