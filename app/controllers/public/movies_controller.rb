@@ -2,16 +2,17 @@ class Public::MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
-    @movies = Movie.page(params[:page]).reverse_order
+    # @movies = Movie.page(params[:page]).reverse_order
+    @q = Movie.ransack(params[:q])
+    @movies = @q.result(didtinct: true)
   end
 
   def show
     @movie = Movie.find(params[:id])
     @movie_comment = MovieComment.new
-
     @customer = Customer.find_by(id: params[:id])
-
   end
+
 
 
 

@@ -22,16 +22,20 @@ devise_for :customers, controllers: {
     passwords: 'customers/sessions',
     registrations: 'customers/registrations',
 }
+ get 'search/search'
   scope module: :public do
     root 'homes#top'
     get 'homes/about' => 'homes#about'
+
     resources :movies, only: [:index, :show, :create] do
     resources :movie_comments, only: [:destroy, :create]
     resource :favorites, only: [:create, :destroy]
+
   end
 
     resources :customers, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
+
     get 'mypage' => 'customers#mypage', as: 'mypage'
   	get 'followings' => 'relationships#followings', as: 'followings'
   	get 'followers' => 'relationships#followers', as: 'followers'
