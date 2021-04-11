@@ -1,5 +1,3 @@
-<div class="container">
-  <div class="row">
 <div class="col-md-8 col-lg-3 px-5 m-5">
 <%= attachment_image_tag(@movie, :image, size: "150×200", fallback: "no_image.jpg") %>
 <%= @movie.title %>
@@ -35,32 +33,50 @@
 <%= @movie.explain %>
 
 
-<div class="comments">
-<p>コメント件数：<%= @movie.movie_comments.count %></p>
-<% @movie.movie_comments.each do |movie_comment| %>
-  <p><%= image_tag('no_image.jpg') %></p>
-  <%= link_to movie_comment.customer.name, customer_path(@customer) %>
-  <%= movie_comment.created_at.strftime('%Y/%m/%d') %>
-  <%= movie_comment.comment %>
-  <% if movie_comment.customer == current_customer %>
-  <div class="comment-delete">
-    <%= link_to "削除", movie_movie_comment_path(movie_comment.movie,movie_comment), method: :delete %>
+
+<section class="section mt-6">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-5">
+        <div class="card mb-6">
+          <header class="card-header">
+            <p class="card-header-title">
+              <%= @movie.title %>
+            </p>
+          </header>
+          <div class="card-content">
+            <div class="content average-rate">
+              <div class="star-rating mb-2">
+                <div class="star-rating-front" style="width: %">★★★★★</div>
+                <div class="star-rating-back">★★★★★</div>
+              </div>
+              <div class="average-rate-display ml-3 pt-2">
+                （<%= @movie.movie_comments.count %>件のレビュー）
+              </div>
+            </div>
+          </div>
+        </div>
+        <%= render 'public/movie_comments/form', movie_comment: @movie_comment, movie: @movie %>
+        <table class="table is-fullwidth has-text-centered">
+          <thead>
+            <tr>
+              <th>ユーザー</th><th>点数</th><th>内容</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @movie_comments.each do |movie_comment| %>
+              <tr>
+                <td><%= movie_comment.customer.name %></td>
+                <td><%= movie_comment.rate %></td>
+                <td><%= movie_comment.comment %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-  <% end %>
-<% end %>
-</div>
-
-
-<%= form_with model:[@movie, @movie_comment], local: true do |f| %>
-  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-  <%= f.submit "送信する" %>
-<% end %>
-</div>
-</div>
-
-</div>
-</div>
-
+</section>
 
 <div class="text-center">
 <%= link_to "一覧に戻る", movies_path %>
