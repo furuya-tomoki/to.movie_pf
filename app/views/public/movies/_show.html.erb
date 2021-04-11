@@ -1,0 +1,21 @@
+<h2>お気に入りの映画を投稿</h2>
+<%= form_with model: @movie, url: {controller: 'public/movies', action: 'create' }, local:true do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div id="evaluate_stars">
+    <label>評価</label>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+<script>
+  $('#evaluate_stars').raty({
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    scoreName: 'movie[evaluation]' //登録するモデル名とカラム名を記述
+  });
+</script>

@@ -1,2 +1,53 @@
-<h1>MovieComments#index</h1>
-<p>Find me in app/views/movie_comments/index.html.erb</p>
+
+
+
+<!--<section class="section mt-6">-->
+<!--  <div class="container">-->
+<!--    <div class="columns is-centered">-->
+<!--      <div class="column is-5">-->
+<!--        <div class="card mb-6">-->
+<!--          <header class="card-header">-->
+<!--            <p class="card-header-title">-->
+<!--              %= link_to attachment_image_tag(@movie, :image, format: 'jpeg', size: "150x200", fallback: "no_image.jpg") %>-->
+<!--                %= @movie.title %>-->
+<!--                 %= @movie.director %>-->
+<!--      %= @movie.actor %>-->
+<!--      %= @movie.explain %>-->
+<!--            </p>-->
+<!--          </header>-->
+<!--          <div class="card-comment">-->
+<!--            <div class="comment average-rate">-->
+<!--              <div class="star-rating mb-2">-->
+<!--                <div class="star-rating-front" style="width:%">★★★★★</div>-->
+<!--                <div class="star-rating-back">★★★★★</div>-->
+<!--              </div>-->
+<!--              <div class="average-rate-display ml-3 pt-2">-->
+<!--              （%= @movie.movie_comments.count %>件のレビュー）-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <table class="table is-fullwidth has-text-centered">-->
+<!--          <thead>-->
+<!--            <tr>-->
+<!--              <th>ユーザー</th><th>点数</th><th>内容</th>-->
+<!--            </tr>-->
+<!--          </thead>-->
+<!--          <tbody>-->
+<!--            % @movie_comments.each do |movie_comment| %>-->
+<!--              <tr>-->
+<!--                <td>%= movie_comment.customer.name %></td>-->
+<!--                <td>%= movie_comment.rate %></td>-->
+<!--                <td>%= movie_comment.comment %></td>-->
+<!--              </tr>-->
+<!--            % end %>-->
+<!--          </tbody>-->
+<!--        </table>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
+
+<!--<div class="text-center">-->
+<!--<%= link_to "作品一覧に戻る", movies_path %>-->
+<!--</div>-->
