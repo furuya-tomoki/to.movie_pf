@@ -1,25 +1,23 @@
-<div class="hero"></div>
+<div class="video-container">
 
-<div class="container">
-<h3 class="text-center"><strong>新着作品</strong></h3>
-  <div class="row">
-    <% @movies.each do |movie| %>
-    <div class="col-md-3">
-      <%= link_to attachment_image_tag(movie, :image, format: 'jpeg', size: "150x200", fallback: "no_image.jpg"), movie_path(movie) %>
-      <p class="text-left">
-      <%= movie.title %>
-      <p class="text-left">
-      <%= link_to "#{movie.movie_comments.count}コメント", movie_path(movie.id) %>
-
-      </p>
-      </p>
-    </div>
-    <% end %>
-
-
-  </div>
-</div>
+<%= video_tag "Film-46355.mp4", class: "landing_video", loop: true, autoplay: true, muted: true,  height: "100%", width: "100%" %>
 
 
 
-<%= paginate @movies %>
+ <div class="texts">
+
+        <p></p>
+		<p>to.movieへ</p>
+		<p>ようこそ</p>
+		<p>このサイトは</p>
+		<p>映画好きの</p>
+		<p>映画好きによる</p>
+		<p>映画好きのためのサイト</p>
+		<p>最新映画から</p>
+		<p>昔の映画まで</p>
+		<p>映画好き同士で</p>
+		<p>評価やレビューもできます</p>
+		<p>どうぞご堪能ください</p>
+		<p></p>
+	</div>
+

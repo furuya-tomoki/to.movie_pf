@@ -1,26 +1,48 @@
+<!-- 検索フォーム -->
 <%= search_form_for @q do |f| %>
-  <%= f.label :title, "タイトル・キャスト名" %>
+ <%= f.label :title, "タイトル・キャスト名" %>
   <%= f.search_field :title_or_actor_cont %>
-
-  <%= f.submit "検索" %>
+ <%= f.submit "検索" %>
 <% end %>
-
-<div class="container">
-<h4>作品一覧</h4>
+<!-- 検索フォーム -->
 
 
-<div class="row">
-    <% @movies.each do |movie| %>
-    <div class="col-md-3">
-      <%= link_to attachment_image_tag(movie, :image, format: 'jpeg', size: "150x200", fallback: "no_image.jpg"), movie_path(movie) %>
-      <%= link_to "#{movie.movie_comments.count}コメント", movie_path(movie.id) %>
-      <%= link_to movie.title, movie_path(movie) %>
-      <%= movie.director %>
+<section class="section mt-6">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-5">
+        <% @movies.each do |movie| %>
+          <div class="card mb-6">
+            <header class="card-header">
+              <p class="card-header-title">
+                <%= link_to attachment_image_tag(movie, :image, format: 'jpeg', size: "150x200", fallback: "no_image.jpg") %>
+                <%= movie.title %>
+                 <%= movie.director %>
       <%= movie.actor %>
-    </div>
-    <% end %>
+              </p>
+            </header>
+            <div class="card-content">
+              <div class="content">
+                <div class="content average-rate">
+                  <div class="star-rating mb-2">
+                    <div class="star-rating-front" style="width:>%">★★★★★</div>
+                    <div class="star-rating-back">★★★★★</div>
+                  </div>
+                  <div class="average-rate-display ml-3 pt-2">
+                   （<%= movie.movie_comments.count %>件のレビュー）
+                  </div>
+                </div>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <%= link_to movie_path(movie), class: "button card-footer-item" do %>
+                レビューを見る
+              <% end %>
+
+            </footer>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-
-
-  <!--%= paginate @movies %>-->
+</section>
