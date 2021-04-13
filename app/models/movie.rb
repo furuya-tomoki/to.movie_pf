@@ -4,6 +4,23 @@ class Movie < ApplicationRecord
   belongs_to :genre
   attachment :image
 
+  def avg_rate
+    if movie_comments.empty?
+      0.0
+    else
+
+      movie_comments.average(:rate).round(1).to_f
+    end
+  end
+
+  def movie_comment_rate_percentage
+    if movie_comments.empty?
+      0.0
+    else
+
+      movie_comments.average(:rate).round(1).to_f*100/5
+    end
+  end
 
 
 

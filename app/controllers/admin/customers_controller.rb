@@ -1,10 +1,8 @@
 class Admin::CustomersController < ApplicationController
-before_action :authenticate_admin!
-
+  before_action :authenticate_admin!
 
   def index
     @customers = Customer.all
-
   end
 
   def show
@@ -25,8 +23,8 @@ before_action :authenticate_admin!
   end
 
   private
-  def customer_params
-   params.require(:customer).permit(:name, :image, :is_valid, :email)
-  end
 
+  def customer_params
+    params.require(:customer).permit(:name, :image, :is_valid, :email)
+  end
 end

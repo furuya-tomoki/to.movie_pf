@@ -1,5 +1,4 @@
 class Public::FavoritesController < ApplicationController
-
   def create
     @movie = Movie.find(params[:movie_id])
     favorite = @movie.favorites.new(customer_id: current_customer.id)
@@ -13,5 +12,4 @@ class Public::FavoritesController < ApplicationController
     favorite.destroy
     redirect_to request.referer
   end
-
 end

@@ -35,5 +35,4 @@ class AdminControllerTest < ActionDispatch::IntegrationTest
     get admin_update_url
     assert_response :success
   end
-
 end

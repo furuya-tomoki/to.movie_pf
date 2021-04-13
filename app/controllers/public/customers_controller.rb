@@ -1,7 +1,6 @@
 class Public::CustomersController < ApplicationController
-
   def show
-   @customer = Customer.find(params[:id])
+    @customer = Customer.find(params[:id])
   end
 
   def edit
@@ -17,10 +16,8 @@ class Public::CustomersController < ApplicationController
     end
   end
 
-
-
   def withdrawal
-   @customer = Customer.find(params[:id])
+    @customer = Customer.find(params[:id])
     @customer.update(is_valid: false)
     reset_session
     # sessionの情報削除
@@ -32,6 +29,7 @@ class Public::CustomersController < ApplicationController
   end
 
   private
+
   def customer_params
     params.require(:customer).permit(:name, :image, :is_valid, :email)
   end

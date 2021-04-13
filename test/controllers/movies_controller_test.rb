@@ -10,5 +10,4 @@ class MoviesControllerTest < ActionDispatch::IntegrationTest
     get movies_show_url
     assert_response :success
   end
-
 end
