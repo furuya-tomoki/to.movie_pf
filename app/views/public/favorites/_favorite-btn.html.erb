@@ -1,0 +1,7 @@
+
+
+<% if movie.favorited_by?(current_customer) %>
+   <%= link_to movie.favorites.count, movie_favorites_path(movie), method: :delete, remote: true, class: "glyphicon glyphicon-heart" %>
+<% else %>
+  <%= link_to movie.favorites.count, movie_favorites_path(movie), method: :post, remote: true, class: "glyphicon glyphicon-heart-empty" %>
+<% end %>

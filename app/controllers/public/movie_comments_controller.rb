@@ -16,17 +16,16 @@ class Public::MovieCommentsController < ApplicationController
  def create
   @movie_comment = MovieComment.new(movie_comment_params)
   @movie_comment.customer_id = current_customer.id
-  if @movie_comment.save
-   redirect_to movie_movie_comments_path(@movie_comment.movie)
-  else
+  unless @movie_comment.save
    @movie = Movie.find(params[:movie_id])
    render "public/movies/show"
   end
  end
 
  def destroy
-  MovieComment.find_by(id:params[:id],movie_id:params[:movie_id]).destroy
-  redirect_to movie_path(params[:movie_id])
+    @movie = Movie.find(params[:book_id])
+    favorite = @movie.favorites.find_by(customer_id: current_customer.id)
+    favorite.destroy
  end
 
 private

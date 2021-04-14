@@ -1,0 +1,21 @@
+<table class="table is-fullwidth has-text-centered">
+          <thead>
+            <tr>
+              <th>ユーザー</th>
+              <th>点数</th>
+              <th>内容</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @movie_comments.each do |movie_comment| %>
+              <tr>
+                <td><%= movie_comment.customer.name %></td>
+                <td><%= movie_comment.rate %></td>
+                <td><%= movie_comment.comment %></td>
+                <% if current_customer == movie_comment.customer %>
+    	<td><%= link_to 'Destroy', movie_movie_comment_path(movie_comment.movie_id, movie_comment.id), class: 'btn-sm btn-danger', method: :delete, remote: true %></td>
+    	     <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>

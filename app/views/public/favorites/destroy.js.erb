@@ -1,0 +1,2 @@
+$("#movie_<%= @movie.id %> .favorite-btn").html("<%= j(render 'public/favorites/favorite-btn', movie: @movie) %>");
+<!-- セレクタ内でmovieを定義 -->

@@ -1,0 +1,3 @@
+$("#movie_<%= @movie.id %> .comments-count").html("レビュー数: <%= @movie.movie_comments.count %>");
+$(".movie_comments").html("<%= j(render 'public/movie_comments/index', movie: @movie) %>");
+$("#movie_comment_comment").val("");
