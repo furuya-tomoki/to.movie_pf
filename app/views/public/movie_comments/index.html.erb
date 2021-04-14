@@ -3,14 +3,7 @@
  <%= @movie.title %>
 </div>
 
-<!-- お気に入り -->
-<div class="col-md-4 col-lg-5 px-5 m-5">
-  <div style="m-3">
-  <div id="movie_<%= @movie.id %>" class="favorite-btns_<%= @movie.id %>">
-    <%= render 'public/favorites/favorite-btn', movie: @movie %>
-  </div>
-</div>
-<!-- お気に入り -->
+
 
 <h4>ジャンル</h4>
  <%= @movie.genre.name %>
@@ -31,6 +24,9 @@
           <header class="card-header">
             <p class="card-header-title">
               <%= @movie.title %>
+              <div id="movie_<%= @movie.id %>" class="favorite-btns_<%= @movie.id %>">
+               <%= render 'public/favorites/favorite-btn', movie: @movie %>
+               </div>
             </p>
           </header>
           <div class="card-content">
@@ -57,7 +53,7 @@
                 <td><%= movie_comment.rate %></td>
                 <td><%= movie_comment.comment %></td>
                  <% if current_customer == movie_comment.customer %>
-    	<td><%= link_to 'Destroy', movie_movie_comment_path(movie_comment.movie_id, movie_comment.id), class: 'btn-sm btn-danger', method: :delete, local: true %></td>
+              	<td><%= link_to 'Destroy', movie_movie_comment_path(movie_comment.movie_id, movie_comment.id), class: 'btn-sm btn-danger', method: :delete, local: true %></td>
     	     <% end %>
               </tr>
             <% end %>
