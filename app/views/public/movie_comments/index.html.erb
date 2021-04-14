@@ -1,3 +1,28 @@
+<div class="col-md-8 col-lg-3 px-5 m-5">
+ <%= attachment_image_tag(@movie, :image, size: "150×200", fallback: "no_image.jpg") %>
+ <%= @movie.title %>
+</div>
+
+<!-- お気に入り -->
+<div class="col-md-4 col-lg-5 px-5 m-5">
+  <div style="m-3">
+  <div id="movie_<%= @movie.id %>" class="favorite-btns_<%= @movie.id %>">
+    <%= render 'public/favorites/favorite-btn', movie: @movie %>
+  </div>
+</div>
+<!-- お気に入り -->
+
+<h4>ジャンル</h4>
+ <%= @movie.genre.name %>
+<h4>作品名</h4>
+ <%= @movie.title %>
+<h4>監督名</h4>
+ <%= @movie.director %>
+<h4>主演</h4>
+ <%= @movie.actor %>
+<h4>あらすじ</h4>
+ <%= @movie.explain %>
+
 <section class="section mt-6">
   <div class="container">
     <div class="columns is-centered">
@@ -11,8 +36,7 @@
           <div class="card-content">
             <div class="content average-rate">
               <div class="star-rating mb-2">
-                <div class="star-rating-front" style="width: <%= @movie.movie_comment_rate_percentage %>%">★★★★★</div>
-                <div class="star-rating-back">★★★★★</div>
+                <div class="star-rating-front" style="%"><%= '★' * @movie.movie_comments.average(:rate) %></div>
               </div>
               <div class="average-rate-display ml-3 pt-2">
                 <%= @movie.avg_rate %>点（<%= @movie.movie_comments.count %>件のレビュー）
@@ -32,6 +56,9 @@
                 <td><%= movie_comment.customer.name %></td>
                 <td><%= movie_comment.rate %></td>
                 <td><%= movie_comment.comment %></td>
+                 <% if current_customer == movie_comment.customer %>
+    	<td><%= link_to 'Destroy', movie_movie_comment_path(movie_comment.movie_id, movie_comment.id), class: 'btn-sm btn-danger', method: :delete, local: true %></td>
+    	     <% end %>
               </tr>
             <% end %>
           </tbody>
