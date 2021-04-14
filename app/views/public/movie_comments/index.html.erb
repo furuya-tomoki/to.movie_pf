@@ -1,3 +1,38 @@
+<div class="col-md-8 col-lg-3 px-5 m-5">
+ <%= attachment_image_tag(@movie, :image, size: "150×200", fallback: "no_image.jpg") %>
+ <%= @movie.title %>
+</div>
+
+<!-- お気に入り -->
+<div class="col-md-4 col-lg-5 px-5 m-5">
+  <div style="m-3">
+  <% if @movie.favorited_by?(current_customer) %>
+<p>
+  <%= link_to movie_favorites_path(@movie), method: :delete do %>
+  ♥<%= @movie.favorites.count %>いいね
+  <% end %>
+</p>
+  <% else %>
+<p>
+  <%= link_to movie_favorites_path(@movie), method: :post do %>
+  ♡<%= @movie.favorites.count %>いいね
+  <% end %>
+</p>
+  <% end %>
+</div>
+<!-- お気に入り -->
+
+<h4>ジャンル</h4>
+ <%= @movie.genre.name %>
+<h4>作品名</h4>
+ <%= @movie.title %>
+<h4>監督名</h4>
+ <%= @movie.director %>
+<h4>主演</h4>
+ <%= @movie.actor %>
+<h4>あらすじ</h4>
+ <%= @movie.explain %>
+
 <section class="section mt-6">
   <div class="container">
     <div class="columns is-centered">
@@ -32,6 +67,9 @@
                 <td><%= movie_comment.customer.name %></td>
                 <td><%= movie_comment.rate %></td>
                 <td><%= movie_comment.comment %></td>
+                 <% if current_customer == movie_comment.customer %>
+    	<td><%= link_to 'Destroy', movie_movie_comment_path(movie_comment.movie_id, movie_comment.id), class: 'btn-sm btn-danger', method: :delete, remote: true %></td>
+    	     <% end %>
               </tr>
             <% end %>
           </tbody>
