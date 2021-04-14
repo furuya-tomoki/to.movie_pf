@@ -1,6 +1,7 @@
 class Movie < ApplicationRecord
   has_many :movie_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  belongs_to :customer
   belongs_to :genre
   attachment :image
 
@@ -11,11 +12,11 @@ class Movie < ApplicationRecord
       movie_comments.average(:rate).round(1).to_f
     end
   end
+
   def movie_comment_rate_percentage
     if movie_comments.empty?
       0.0
     else
-
       movie_comments.average(:rate).round(1).to_f*100/5
     end
   end

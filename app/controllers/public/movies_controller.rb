@@ -10,7 +10,6 @@ class Public::MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
-    # @movies = Movie.page(params[:page]).reverse_order
     @q = Movie.ransack(params[:q])
     @movies = @q.result(didtinct: true)
   end
