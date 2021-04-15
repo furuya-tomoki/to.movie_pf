@@ -1,36 +1,27 @@
 <div class="col-md-8 col-lg-3 px-5 m-5">
-<%= attachment_image_tag(@movie, :image, size: "150×200", fallback: "no_image.jpg") %>
-<%= @movie.title %>
+ <%= attachment_image_tag(@movie, :image, size: "150×200", fallback: "no_image.jpg") %>
+ <%= @movie.title %>
 </div>
 
-
+<!-- お気に入り -->
 <div class="col-md-4 col-lg-5 px-5 m-5">
-　    <div style="m-3">
-<% if @movie.favorited_by?(current_customer) %>
-<p>
-  <%= link_to movie_favorites_path(@movie), method: :delete do %>
-  ♥<%= @movie.favorites.count %>いいね
-  <% end %>
-</p>
-<% else %>
-<p>
-  <%= link_to movie_favorites_path(@movie), method: :post do %>
-  ♡<%= @movie.favorites.count %>いいね
-  <% end %>
-</p>
-<% end %>
+  <div style="m-3">
+  <div id="movie_<%= @movie.id %>" class="favorite-btns_<%= @movie.id %>">
+    <%= render 'public/favorites/favorite-btn', movie: @movie %>
+  </div>
 </div>
+<!-- お気に入り -->
 
 <h4>ジャンル</h4>
-<%= @movie.genre.name %>
+ <%= @movie.genre.name %>
 <h4>作品名</h4>
-<%= @movie.title %>
+ <%= @movie.title %>
 <h4>監督名</h4>
-<%= @movie.director %>
+ <%= @movie.director %>
 <h4>主演</h4>
-<%= @movie.actor %>
+ <%= @movie.actor %>
 <h4>あらすじ</h4>
-<%= @movie.explain %>
+ <%= @movie.explain %>
 
 
 
@@ -47,32 +38,15 @@
           <div class="card-content">
             <div class="content average-rate">
               <div class="star-rating mb-2">
-                <div class="star-rating-front" style="width: %">★★★★★</div>
-                <div class="star-rating-back">★★★★★</div>
+                <div class="star-rating-front" style="%"><%= '★' * @movie.movie_comments.average(:rate) %></div>
               </div>
               <div class="average-rate-display ml-3 pt-2">
-                （<%= @movie.movie_comments.count %>件のレビュー）
+                <%= @movie.avg_rate %>点（<%= @movie.movie_comments.count %>件のレビュー）
               </div>
             </div>
           </div>
         </div>
         <%= render 'public/movie_comments/form', movie_comment: @movie_comment, movie: @movie %>
-        <table class="table is-fullwidth has-text-centered">
-          <thead>
-            <tr>
-              <th>ユーザー</th><th>点数</th><th>内容</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @movie_comments.each do |movie_comment| %>
-              <tr>
-                <td><%= movie_comment.customer.name %></td>
-                <td><%= movie_comment.rate %></td>
-                <td><%= movie_comment.comment %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
       </div>
     </div>
   </div>

@@ -25,8 +25,10 @@ class Public::MovieCommentsController < ApplicationController
  end
 
  def destroy
-  MovieComment.find_by(id:params[:id],movie_id:params[:movie_id]).destroy
-  redirect_to movie_path(params[:movie_id])
+  @movie_comment = MovieComment.find(params[:id])
+  @movie_comment.customer_id = current_customer.id
+  @movie_comment.destroy
+		 redirect_to movie_movie_comments_path(@movie_comment.movie)
  end
 
 private

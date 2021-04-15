@@ -9,12 +9,13 @@ Rails.application.routes.draw do
 
   namespace :admin do
   root 'homes#top'
-  resources :movies, only: [:index, :new, :create, :show, :edit, :update]
   resources :genres, only: [:index, :create, :edit, :update, :destroy]
   resources :customers, only: [:index, :show, :edit, :update]
+  resources :movies, only: [:index, :new, :create, :show, :edit, :update] do
   resources :movie_comments, only: [:show, :update, :index, :edit, :destroy, :create]
-  resources :favorites, only: [:create, :destroy]
+  resource :favorites, only: [:create, :destroy]
   end
+end
 
 
 devise_for :customers, controllers: {
@@ -28,9 +29,8 @@ devise_for :customers, controllers: {
   scope module: :public do
     root 'homes#top'
     get 'homes/about' => 'homes#about'
-
     resources :movies, only: [:new, :create, :index, :show, :create, :update] do
-    resources :movie_comments, only: [:new, :index, :show, :destroy, :create]
+    resources :movie_comments, only: [:index, :show, :destroy, :create]
     resource :favorites, only: [:create, :destroy]
   end
 
