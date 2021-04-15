@@ -28,7 +28,7 @@ class Public::MovieCommentsController < ApplicationController
   @movie_comment = MovieComment.find(params[:id])
   @movie_comment.customer_id = current_customer.id
   @movie_comment.destroy
-		redirect_to movies_path
+		 redirect_to movie_movie_comments_path(@movie_comment.movie)
  end
 
 private

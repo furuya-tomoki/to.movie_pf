@@ -19,7 +19,10 @@ before_action :authenticate_admin!
  end
 
  def show
-  @movie = Movie.find(params[:id])
+  @movie_comments = MovieComment.all
+    @movie = Movie.find(params[:id])
+    @movie_comment = MovieComment.new
+    @customer = Customer.find_by(id: params[:id])
  end
 
  def edit
