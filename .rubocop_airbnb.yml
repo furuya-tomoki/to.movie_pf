@@ -1,0 +1,8 @@
+require:
+  - rubocop-airbnb
+
+  # bundle exec rubocop --require rubocop-airbnb
+  # 確認コマンド
+
+  # bundle exec rubocop --require rubocop-airbnb -a
+  # 実行コマンド

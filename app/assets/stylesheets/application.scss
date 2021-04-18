@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+
+@font-face {
+  font-family: 'cinecaption226.ttf';
+  src: font-url('/assets/cinecaption226.ttf')
+}
+
+.notification:not(:last-child){
+  margin-bottom: 0;
+}

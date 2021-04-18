@@ -1,0 +1,5 @@
+<% if @users.exists? %>
+  <%= render 'relationships/follow', customer: @customers %>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>

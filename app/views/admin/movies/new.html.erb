@@ -1,0 +1,29 @@
+<h2>作品新規登録</h2>
+
+<%= form_with model: @movie, url: {controller: 'admin/movies', action: 'create' }, local:true do |f| %>
+
+
+<%= f.label :"ジャンル" %>
+<%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank:"  --選択してください--  " %>
+<!-- ジャンル入力項目を反映 -->
+
+
+<%= f.label :"作品名" %>
+<%= f.text_field :title, autofocus: true, autocomplete: "title", placeholder:"作品名", size: 31 %>
+
+<%= f.label :image, "作品画像" %>
+<%= f.attachment_field :image %>
+
+<%= f.label :"監督名" %>
+<%= f.text_field :director, autofocus: true, autocomplete: "director", placeholder:"監督名", size: 31 %>
+
+<%= f.label :"主演" %>
+<%= f.text_field :actor, autofocus: true, autocomplete: "actor", placeholder:"主演", size: 31 %>
+
+
+<%= f.label :"あらすじ" %>
+<%= f.text_area :explain, autofocus: true, autocomplete: "explain", placeholder:"あらすじ", size: 31 %>
+
+<%= f.submit "新規登録", class: "btn btn-success" %>
+
+<% end %>

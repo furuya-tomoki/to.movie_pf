@@ -1,0 +1,57 @@
+<div class="col-md-8 col-lg-3 px-5 m-5">
+ <%= attachment_image_tag(@movie, :image, size: "150×200", fallback: "no_image.jpg") %>
+ <%= @movie.title %>
+</div>
+
+<!-- お気に入り -->
+<div class="col-md-4 col-lg-5 px-5 m-5">
+  <div style="m-3">
+  <div id="movie_<%= @movie.id %>" class="favorite-btns_<%= @movie.id %>">
+    <%= render 'public/favorites/favorite-btn', movie: @movie %>
+  </div>
+</div>
+<!-- お気に入り -->
+
+<h4>ジャンル</h4>
+ <%= @movie.genre.name %>
+<h4>作品名</h4>
+ <%= @movie.title %>
+<h4>監督名</h4>
+ <%= @movie.director %>
+<h4>主演</h4>
+ <%= @movie.actor %>
+<h4>あらすじ</h4>
+ <%= @movie.explain %>
+
+
+
+<section class="section mt-6">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-5">
+        <div class="card mb-6">
+          <header class="card-header">
+            <p class="card-header-title">
+              <%= @movie.title %>
+            </p>
+          </header>
+          <div class="card-content">
+            <div class="content average-rate">
+              <div class="star-rating mb-2">
+                <div class="star-rating-front" style="%"><%= '★' * @movie.movie_comments.average(:rate) %></div>
+              </div>
+              <div class="average-rate-display ml-3 pt-2">
+                <%= @movie.avg_rate %>点（<%= @movie.movie_comments.count %>件のレビュー）
+              </div>
+            </div>
+          </div>
+        </div>
+        <%= render 'public/movie_comments/form', movie_comment: @movie_comment, movie: @movie %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="text-center">
+<%= link_to "一覧に戻る", movies_path %>
+</div>

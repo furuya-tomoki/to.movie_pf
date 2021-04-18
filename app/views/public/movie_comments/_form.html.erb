@@ -1,0 +1,33 @@
+<p class="is-size-4 mb-3">レビューを書く</p>
+<% if movie_comment.errors.any? %>
+  <div class="notification is-danger">
+    <h2><%= movie_comment.errors.count %>件のエラーがあります。</h2>
+    <ul>
+      <% movie_comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+
+<% end %>
+<div class="rating-box mt-3">
+  <%= form_with model: movie_comment, url: movie_movie_comments_path(movie), local: true do |f| %>
+    <div class="main-rating">
+      <div class="ratings mb-3">
+        <span class="fa fa-star-o" id="star"></span>
+        <span class="fa fa-star-o" id="star"></span>
+        <span class="fa fa-star-o" id="star"></span>
+        <span class="fa fa-star-o" id="star"></span>
+        <span class="fa fa-star-o" id="star"></span>
+      </div>
+      <div class="ml-3 rating-value-display"><span id="rating-value-display">0</span>/5</div>
+    </div>
+    <%= f.hidden_field :movie_id, value: movie.id %>
+    <%= f.hidden_field :rate, id: "rating-value" %>
+    <%= f.text_field :comment, class: "textarea" %>
+    <%= f.submit "保存", class: "button mt-3" %>
+    <%= link_to "他のレビューを見る", movie_movie_comments_path(movie), class: "button light ml-3 mt-3" %>
+  <% end %>
+</div>
+
+<%= javascript_include_tag 'movie_comments.js' %>
