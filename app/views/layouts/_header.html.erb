@@ -9,6 +9,13 @@
 
           <div class="collapse navbar-collapse" id="navbarLinks">
             <ul class="navbar-nav ml-auto">
+              <!-- 検索フォーム -->
+<%= form_with(url: movies_path, local: true, method: :get, class: "search-form") do |form| %>
+  <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
+  <%= form.submit "検索", class: "search-btn" %>
+<% end %>
+<!-- 検索フォーム -->
+
 
 　　　　　　<!-- 会員がログイン時 -->
               <% if customer_signed_in? %>
