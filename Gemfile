@@ -70,8 +70,9 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'ransack'
 gem 'byebug'
-
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+gem 'themoviedb-api', '~> 1.3'
+
