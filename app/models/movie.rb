@@ -5,6 +5,11 @@ class Movie < ApplicationRecord
   belongs_to :genre
   attachment :image
 
+  def self.search(search)
+    return Movie.all unless search
+    Movie.where('title LIKE(?)', "%#{search}%")
+  end
+
   def avg_rate
     if movie_comments.empty?
       0.0

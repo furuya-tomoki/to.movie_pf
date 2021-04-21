@@ -9,15 +9,14 @@
 
           <div class="collapse navbar-collapse" id="navbarLinks">
             <ul class="navbar-nav ml-auto">
+
+
 <!-- 検索フォーム -->
 <%= search_form_for @q do |f| %>
-  <%= f.search_field :title_or_actor_cont, placeholder: "作品名・キャスト名", class: "search-input" %>
- <%= f.submit "検索", class: "search-btn" %>
+<%= f.search_field :title_or_actor_cont, placeholder: "作品名・キャスト名", class: "search_input" %>
+<%= f.submit "検索", class: "search_btn" %>
 <% end %>
 <!-- 検索フォーム -->
-
-
-
 　　　　　　<!-- 会員がログイン時 -->
               <% if customer_signed_in? %>
                 <li class="border border-dark rounded" style= "padding:10px; margin:10px;">

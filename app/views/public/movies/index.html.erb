@@ -1,5 +1,13 @@
 
 
+<!-- 検索フォーム -->
+<!--%= form_with(url: searches_path, local: true, method: :get, class: "search-form") do |f| %>-->
+<!--  %= f.text_field :keyword, placeholder: "作品を検索する", class: "search_input" %>-->
+<!--  %= f.submit "検索", class: "search_btn" %>-->
+<!--% end %>-->
+<!-- 検索フォーム -->
+
+
 
 <div id="slider" class="movie-slider">
 <% @movies.each do |movie| %>
@@ -9,33 +17,22 @@
 
 
 
-<section class="section mt-6">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-5">
-        <% @movies.each do |movie| %>
-          <div class="card mb-6">
-            <header class="card-header">
-              <p class="card-header-title">
-                <%= link_to attachment_image_tag(movie, :image, format: 'jpeg', size: "150x200", fallback: "no_image.jpg") %>
-                <%= movie.title %>
-                <%= movie.director %>
-                <%= movie.actor %>
-              </p>
-            </header>
+<div class="contents">
+<% @movies.each do |movie| %>
+<div class="movie_content">
+  <p class="movie_title">
+<%= link_to attachment_image_tag(movie, :image, format: 'jpeg', size: "150x200", fallback: "no_image.jpg") %>
+<%= movie.title %>
+<%= movie.director %>
+<%= movie.actor %>
+</p>
+</div>
 
-            <footer class="card-footer">
-               <%= link_to movie_movie_comments_path(movie), class: "button card-footer-item" do %>
-                レビューを見る
-              <% end %>
-              <%= link_to movie_path(movie), class: "button card-footer-item" do %>
-                レビューを書く
-              <% end %>
-            </footer>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</section>
-
+<%= link_to movie_movie_comments_path(movie), class: "button card-footer-item" do %>
+  レビューを見る
+  <% end %>
+<%= link_to movie_path(movie), class: "button card-footer-item" do %>
+  レビューを書く
+  <% end %>
+<% end %>
+</div>

@@ -4,6 +4,11 @@ class Public::MoviesController < ApplicationController
   Tmdb::Api.language("ja")
 
   def search
+    @input = Movie.search(params[:keyword])
+    respond_to do |format|
+      format.html
+      format.json
+  end
   end
 
 

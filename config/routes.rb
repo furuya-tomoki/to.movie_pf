@@ -8,35 +8,35 @@ Rails.application.routes.draw do
 # devise customersと被らないよう指定
 
   namespace :admin do
-  root 'homes#top'
-  resources :genres, only: [:index, :create, :edit, :update, :destroy]
-  resources :customers, only: [:index, :show, :edit, :update]
-  resources :movies, only: [:index, :new, :create, :show, :edit, :update] do
-  resources :movie_comments, only: [:show, :update, :index, :edit, :destroy, :create]
-  resource :favorites, only: [:create, :destroy]
+    root 'homes#top'
+    resources :genres, only: [:index, :create, :edit, :update, :destroy]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :movies, only: [:index, :new, :create, :show, :edit, :update] do
+      resources :movie_comments, only: [:show, :update, :index, :edit, :destroy, :create]
+      resource :favorites, only: [:create, :destroy]
+    end
   end
-end
 
 
-devise_for :customers, controllers: {
+  devise_for :customers, controllers: {
     sessions: 'customers/sessions',
     passwords: 'customers/sessions',
     registrations: 'customers/registrations',
-}
-
- get 'search/search'
+  }
+  get 'search/search'
 
   scope module: :public do
     root 'homes#top'
     get 'homes/about' => 'homes#about'
     resources :movies, only: [:new, :create, :index, :show, :create, :update] do
-    resources :movie_comments, only: [:index, :show, :destroy, :create]
-    resource :favorites, only: [:create, :destroy]
-  end
+      resources :movie_comments, only: [:index, :show, :destroy, :create]
+      resource :favorites, only: [:create, :destroy]
 
-    resources :customers, only: [:show, :edit, :update] do
+    end
+    resources :searches, only: [:index]
+
+  resources :customers, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
-
     get 'mypage' => 'customers#mypage', as: 'mypage'
   	get 'followings' => 'relationships#followings', as: 'followings'
   	get 'followers' => 'relationships#followers', as: 'followers'

@@ -1,0 +1,14 @@
+<%= form_with(url: searches_path, local: true, method: :get, class: "search_form") do |f| %>
+  <%= f.text_field :keyword, placeholder: "title", class: "search_input" %>
+  <%= f.submit "Search", class: "search_btn" %>
+  <% end %>
+
+<div class="contents">
+  <% @movies.each do |movie| %>
+    <div class="movie_content">
+      <p class="movie_title">
+        <%= movie.title %>
+      </p>
+    </div>
+  <% end %>
+</div>
