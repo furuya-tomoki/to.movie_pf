@@ -1,10 +1,4 @@
 class Public::MoviesController < ApplicationController
-  require 'themoviedb-api'
-  Tmdb::Api.key("c2b443387cf5821b863c160c4c061371")
-  Tmdb::Api.language("ja")
-
-  def search
-  end
 
 
   def create
