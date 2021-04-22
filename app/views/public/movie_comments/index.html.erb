@@ -4,12 +4,14 @@
 </div>
 
 <!-- お気に入り -->
+<% if customer_signed_in? %>
 <div class="col-md-4 col-lg-5 px-5 m-5">
   <div style="m-3">
   <div id="movie_<%= @movie.id %>" class="favorite-btns_<%= @movie.id %>">
     <%= render 'public/favorites/favorite-btn', movie: @movie %>
   </div>
 </div>
+<% end %>
 <!-- お気に入り -->
 
 <h4>ジャンル</h4>
@@ -53,7 +55,7 @@
           <tbody>
             <% @movie_comments.each do |movie_comment| %>
               <tr>
-                <td><%= movie_comment.customer.name %></td>
+                <td><%= link_to movie_comment.customer.name, customer_path(movie_comment.customer) %></td>
                 <td><%= movie_comment.rate %></td>
                 <td><%= movie_comment.comment %></td>
                  <% if current_customer == movie_comment.customer %>

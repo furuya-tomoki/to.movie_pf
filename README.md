@@ -1,24 +1,38 @@
-# README
+<img width="956" alt="スクリーンショット 2021-03-31 22 25 46" src="https://user-images.githubusercontent.com/76623704/113151507-1d453780-9270-11eb-83f9-7efb11a7e9fd.png">
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+「to.movie」を閲覧することによって、「映画に」興味を持てるサイトです。  
+ユーザー全員が映画レビューやお気に入り登録ができ、人気順にも閲覧できる映画情報サービスです。
 
-Things you may want to cover:
 
-* Ruby version
+### サイトテーマ
+映画選びに困らなくなるサイト
 
-* System dependencies
+### テーマを選んだ理由
+普段あまり映画を見ない人や、映画選びに悩んいる人たちに人気の作品を伝えたい
 
-* Configuration
+### ターゲットユーザ
+- 映画鑑賞が趣味のユーザ
+- 家時間が多いユーザ
+- 映画選択に悩んでいるユーザ
+- 映画について語りたいユーザ
 
-* Database creation
+### 主な利用シーン
+- 休日など暇な時間
+- 移動時間に映画を見たいときに
+- 隠れた名作を探したいときに
+- 仕事の合間の休憩時間などに
 
-* Database initialization
+## 機能一覧
+ https://docs.google.com/spreadsheets/d/1-oV4aTsZE3xKsB5Y0PKfZImq8r-91GSxksPDFInnPRs/edit#gid=0 
 
-* How to run the test suite
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# 使用素材
+SEOSTHEMES  
+https://seosthemes.com/free-wordpress-video-theme/

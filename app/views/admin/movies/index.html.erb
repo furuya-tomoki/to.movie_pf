@@ -1,17 +1,15 @@
-
-<!-- 検索フォーム -->
-<%= form_with(url: movies_path, local: true, method: :get, class: "search-form") do |form| %>
-  <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
-  <%= form.submit "検索", class: "search-btn" %>
-<% end %>
-<!-- 検索フォーム -->
-
-
-
- <div class="col-3">
+<div class="col-3">
       <%= link_to '新規作品登録', new_admin_movie_path, class: 'btn btn-primary'%>
     </div>
 </div>
+
+
+<div id="slider" class="movie-slider">
+<% @movies.each do |movie| %>
+   <%= link_to attachment_image_tag(movie, :image, format: 'jpeg', size: "240x426", fallback: "no_image.jpg"), movie_movie_comments_path(movie) %>
+   <% end %>
+</div>
+
 
 
 <section class="section mt-6">
@@ -22,21 +20,32 @@
           <div class="card mb-6">
             <header class="card-header">
               <p class="card-header-title">
-            <%= link_to attachment_image_tag(movie, :image, format: 'jpeg', size: "140x100", fallback: "no_image.jpg"), movie_path(movie) %>
-            <%= movie.id %>
-            <%= link_to movie.title, admin_movie_path(movie) %>
-            <%= movie.director %>
-            <%= movie.actor %>
-            <%= movie.genre.name %>
+                <%= link_to attachment_image_tag(movie, :image, format: 'jpeg', size: "150x200", fallback: "no_image.jpg") %>
+                <%= movie.title %>
+                <%= movie.director %>
+                <%= movie.actor %>
               </p>
             </header>
 
             <footer class="card-footer">
-               <%= link_to admin_movie_movie_comments_path(movie), class: "button card-footer-item" do %>
+              <% if customer_signed_in? %>
+               <%= link_to movie_movie_comments_path(movie), class: "button card-footer-item" do %>
                 レビューを見る
               <% end %>
+              <%= link_to movie_path(movie), class: "button card-footer-item" do %>
+                レビューを書く
+              <% end %>
 
+              <% elsif admin_signed_in? %>
+              <%= link_to movie_movie_comments_path(movie), class: "button card-footer-item" do %>
+                レビューを見る
+              <% end %>
+              <%= link_to edit_admin_movie_path(movie), class: "button card-footer-item" do %>
+                作品編集
+              <% end %>
+              <% end %>
             </footer>
+
           </div>
         <% end %>
       </div>
