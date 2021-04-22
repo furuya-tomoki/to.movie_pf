@@ -6,18 +6,18 @@ class Movie < ApplicationRecord
   attachment :image
 
   def avg_rate
-    if movie_comments.empty?
-      0.0
+    unless self.movie_comments.empty?
+      movie_comments.average(:rate).round(1)
     else
-      movie_comments.average(:rate).round(1).to_f
+       0.0
     end
   end
 
-  def movie_comment_rate_percentage
-    if movie_comments.empty?
-      0.0
+  def avg_rate_percentage
+    unless self.movie_comments.empty?
+      movie_comments.average(:rate).round(1).to_f * 100 / 5
     else
-      movie_comments.average(:rate).round(1).to_f*100/5
+      0.0
     end
   end
 
@@ -25,6 +25,7 @@ class Movie < ApplicationRecord
     favorites.where(customer_id: customer.id).exists?
   end
 
-  # 引数で渡されたユーザidがFavoritesテーブル内に存在（exists?）するかどうかを調べ
+
+  # 引数で渡されたユーザidがFavoritesテーブル内に存在（exists?）するかどうかを調べる
   # 存在していればtrue、存在していなければfalseを返す
 end

@@ -1,7 +1,6 @@
 class Public::CustomersController < ApplicationController
-
   def show
-   @customer = Customer.find(params[:id])
+    @customer = Customer.find(params[:id])
   end
 
   def edit
@@ -11,27 +10,30 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      redirect_to customer_path
+       redirect_to customer_path
     else
-      render :edit
+       render :edit
     end
   end
 
-
-
+    # 退会処理
   def withdrawal
-   @customer = Customer.find(params[:id])
+    @customer = Customer.find(params[:id])
     @customer.update(is_valid: false)
+    # is_valid: false = 退会
+    # 更新すると退会する
     reset_session
-    # sessionの情報削除
+    # session = 登録情報の削除
     redirect_to root_path
   end
 
+    # 退会確認画面
   def unsubscribe
     @customer = Customer.find(params[:id])
   end
 
   private
+
   def customer_params
     params.require(:customer).permit(:name, :image, :is_valid, :email)
   end

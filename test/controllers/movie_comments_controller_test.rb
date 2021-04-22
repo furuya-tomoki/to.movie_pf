@@ -30,5 +30,4 @@ class MovieCommentsControllerTest < ActionDispatch::IntegrationTest
     get movie_comments_create_url
     assert_response :success
   end
-
 end

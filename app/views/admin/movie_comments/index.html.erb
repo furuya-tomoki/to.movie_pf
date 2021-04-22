@@ -3,14 +3,7 @@
  <%= @movie.title %>
 </div>
 
-<!-- お気に入り -->
-<div class="col-md-4 col-lg-5 px-5 m-5">
-  <div style="m-3">
-  <div id="movie_<%= @movie.id %>" class="favorite-btns_<%= @movie.id %>">
-    <%= render 'public/favorites/favorite-btn', movie: @movie %>
-  </div>
-</div>
-<!-- お気に入り -->
+
 
 <h4>ジャンル</h4>
  <%= @movie.genre.name %>
@@ -36,14 +29,14 @@
           <div class="card-content">
             <div class="content average-rate">
               <div class="star-rating mb-2">
-                <div class="star-rating-front" style="%"><%= '★' * @movie.movie_comments.average(:rate) %></div>
+                <div class="star-rating-front" style="width: <%= @movie.avg_rate_percentage %>%">★★★★★</div>
               </div>
               <div class="average-rate-display ml-3 pt-2">
                 <%= @movie.avg_rate %>点（<%= @movie.movie_comments.count %>件のレビュー）
               </div>
             </div>
           </div>
-        </div>
+        </div>x
         <table class="table is-fullwidth has-text-centered">
           <thead>
             <tr>

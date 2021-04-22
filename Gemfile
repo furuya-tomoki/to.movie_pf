@@ -75,4 +75,3 @@ group :production do
   gem 'mysql2'
 end
 gem 'themoviedb-api', '~> 1.3'
-
