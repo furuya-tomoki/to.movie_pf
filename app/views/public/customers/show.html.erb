@@ -9,9 +9,12 @@
     <table class="table table-borderless">
      <tr>
        <th>
-          <span class="mr-3">会員情報</span>
-
-          <span class=ml-3><%= link_to '編集する', edit_customer_path(@customer), class: "btn btn-success" %></span>
+          <span class=ml-3>
+           <% if @customer.id == current_customer.id %>
+           <span class="mr-3">会員情報</span>
+           <%= link_to '編集する', edit_customer_path(@customer), class: "btn btn-success" %>
+           <% end %>
+           </span>
        </th>
      </tr>
    </table>
@@ -25,7 +28,7 @@
 
       <tr>
         <th class="table-secondary">アイコン</th>
-        <td><%= attachment_image_tag(@customer, :image, size: "340x240", fallback: "no_image.jpg" ) %></td>
+        <td><%= attachment_image_tag(@customer, :image, size: "100x100", fallback: "no_image.jpg" ) %></td>
       </tr>
 
       <tr>

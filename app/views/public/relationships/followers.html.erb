@@ -1,5 +1,7 @@
+<!-- フォロー中のユーザー -->
+<!-- # 引数で渡されたcustomersが存在（exists?）するかどうかを調べる -->
 <% if @customers.exists? %>
-  <%= render 'relationships/follow', customer: @customers %>
+  <%= render 'public/customers/follow', customer: @customers %>
 <% else %>
   <p>ユーザーはいません</p>
 <% end %>
