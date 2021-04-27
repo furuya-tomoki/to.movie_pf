@@ -9,7 +9,7 @@ class Public::MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all
+    @movies = Movie.page(params[:page]).reverse_order
     @q = Movie.ransack(params[:q])
      # params[:q] = ユーザーが記入したキーワード
     @movies = @q.result(distinct: true)

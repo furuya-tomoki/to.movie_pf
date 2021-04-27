@@ -1,6 +1,13 @@
 class Public::CustomersController < ApplicationController
+
+  def mypage
+    @favorites = Favorite.where(customer_id: current_customer.id)
+
+  end
+
   def show
     @customer = Customer.find(params[:id])
+    @favorites = Favorite.where(customer_id: current_customer.id)
   end
 
   def edit
@@ -12,7 +19,7 @@ class Public::CustomersController < ApplicationController
     if @customer.update(customer_params)
        redirect_to customer_path
     else
-       render :edit
+       render "edit"
     end
   end
 

@@ -1,29 +1,41 @@
-<div class="col-md-8 col-lg-3 px-5 m-5">
+<div class="container p-5">
+ <div class="content">
+   <div class="row">
+    <div class="col-md-3">
  <%= attachment_image_tag(@movie, :image, size: "150×200", fallback: "no_image.jpg") %>
- <%= @movie.title %>
-</div>
-
-<!-- お気に入り -->
+ <!-- お気に入り -->
 <% if customer_signed_in? %>
-<div class="col-md-4 col-lg-5 px-5 m-5">
-  <div style="m-3">
-  <div id="movie_<%= @movie.id %>" class="favorite-btns_<%= @movie.id %>">
+   <div id="movie_<%= @movie.id %>" class="favorite-btns_<%= @movie.id %>">
     <%= render 'public/favorites/favorite-btn', movie: @movie %>
-  </div>
-</div>
+   </div>
 <% end %>
 <!-- お気に入り -->
-
-<h4>ジャンル</h4>
- <%= @movie.genre.name %>
-<h4>作品名</h4>
- <%= @movie.title %>
-<h4>監督名</h4>
- <%= @movie.director %>
-<h4>主演</h4>
- <%= @movie.actor %>
-<h4>あらすじ</h4>
- <%= @movie.explain %>
+    </div>
+     <div class="col-md-9">
+      <div class="text">
+       <div class="title">
+     <h3>
+      <strong><%= @movie.title %></strong>
+     </h3>
+   </div>
+<p>
+  <%= @movie.explain %>
+</p>
+ <p>
+  <li>
+   <span>監督名:</span>
+     <%= @movie.director %>
+   </li>
+   <li>
+    <span>主演:</span>
+     <%= @movie.actor %>
+    </li>
+ </p>
+ </div>
+</div>
+  </div>
+ </div>
+</div>
 
 <section class="section mt-6">
   <div class="container">
@@ -33,6 +45,7 @@
           <header class="card-header">
             <p class="card-header-title">
               <%= @movie.title %>
+
             </p>
           </header>
           <div class="card-content">
@@ -73,3 +86,4 @@
 <div class="text-center">
 <%= link_to "作品一覧に戻る", movies_path %>
 </div>
+
