@@ -38,10 +38,7 @@
    <span>キャスト:</span>
      <%= @movie.cast %>
    </li>
-   <li>
-   <span>引用元:</span>
-     <%= @movie.quote %>
-   </li>
+   <span><%= link_to "※ 引用元", @movie.quote %></span>
  </p>
  </div>
 </div>
@@ -80,7 +77,13 @@
           <tbody>
             <% @movie_comments.each do |movie_comment| %>
               <tr>
+                <% if customer_signed_in? %>
                 <td><%= link_to movie_comment.customer.name, customer_path(movie_comment.customer) %></td>
+                <% elsif admin_signed_in? %>
+                <td><%= link_to movie_comment.customer.name, customer_path(movie_comment.customer) %></td>
+                <% else %>
+                <td><%= movie_comment.customer.name %></td>
+                <% end %>
                 <td><%= movie_comment.rate %></td>
                 <td><%= movie_comment.comment %></td>
                  <% if current_customer == movie_comment.customer %>

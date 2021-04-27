@@ -11,22 +11,27 @@
   </h6>
 
 <p class="card-text">
-<% if customer_signed_in? %>
-               <%= link_to movie_movie_comments_path(movie), class: "button card-footer-item" do %>
-              <i class="fas fa-eye"></i>
-              <% end %>
-              <%= link_to movie_path(movie), class: "button card-footer-item" do %>
-              <i class="fas fa-pen"></i>
-              <% end %>
+ <% if customer_signed_in? %>
+  <%= link_to movie_movie_comments_path(movie), class: "button card-footer-item" do %>
+   <i class="fas fa-eye"></i>
+ <% end %>
+  <%= link_to movie_path(movie), class: "button card-footer-item" do %>
+   <i class="fas fa-pen"></i>
+ <% end %>
 
-              <% elsif admin_signed_in? %>
-              <%= link_to movie_movie_comments_path(movie), class: "button card-footer-item" do %>
-                レビューを見る
-              <% end %>
-              <%= link_to edit_admin_movie_path(movie), class: "button card-footer-item" do %>
-                作品編集
-              <% end %>
-              <% end %>
+ <% elsif admin_signed_in? %>
+  <%= link_to movie_movie_comments_path(movie), class: "button card-footer-item" do %>
+   <i class="fas fa-eye"></i>
+ <% end %>
+   <%= link_to edit_admin_movie_path(movie), class: "button card-footer-item" do %>
+    <i class="fas fa-edit"></i>
+  <% end %>
+
+  <% else %>
+  <%= link_to movie_movie_comments_path(movie), class: "button card-footer-item" do %>
+   <i class="fas fa-eye"></i>
+ <% end %>
+   <% end %>
 </p>
 
 </div>

@@ -1,18 +1,29 @@
 
-<div class="row">
-<% @customers.each do |customer| %>
-<div class="col-md-2">
-<div class="card">
-<%= attachment_image_tag(customer, :image, size: "215x250", fallback: "no_image.jpg" ) %>
-<div class="card-body text-center">
-<h6 class="card-title">
-  <%= link_to customer.name, admin_customer_path(customer) %>
-  </h6>
-  <p class="card-text">
-<%= link_to "編集する", admin_customer_path(customer) %>
-    </p>
+
+
+
+
+<div class="container">
+  <div class="row mt-2">
+   <div class="col-md-3 mb-4 text-center">
+     <h4 style="background:#EEEEEE">会員一覧</h4>
+   </div>
    </div>
 
+
+<table class="table">
+  <thead>
+    <tr bgcolor="#EEEEEE">
+      <th>会員</th>
+    </tr>
+  </thead>
+
+  <% @customers.each do |customer| %>
+    <tbody>
+    <tr>
+      <td><%= link_to customer.name, admin_customer_path(customer) %></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
 </div>
-</div>
- <% end %>
