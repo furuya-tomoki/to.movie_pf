@@ -1,26 +1,29 @@
-<h2>Log in</h2>
+<div class="container">
+  <div class="row">
+   <div class="col-md-8 mx-auto">
+     <div class="my-3 ">ログイン</div>
+     <h5 class="my-2 ml-3">会員の方はこちらからログイン</h5>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<%= form_with model: @admin, url: admin_session_path, local: true do |f| %>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
+ <table class="table table-borderless bl-3">
+   <tr>
+    <th class="text-right"><%= f.label :メールアドレス %></th>
+    <th><%= f.email_field :email, autofocus: true, autocomplete: "email", size: 40 %></th>
+   </tr>
+   <tr>
+     <th class="text-right"><%= f.label :パスワード %></th>
+     <th> <%= f.password_field :password, autocomplete: "current-password", size: 40 %></th>
+   </tr>
+   <tr>
+     <th></th>
+     <th> <%= f.submit "ログイン", class: "btn btn-primary btn-lg" %></th>
+   </tr>
+ </table>
 <% end %>
 
-<%= render "admins/shared/links" %>
+<h5 class="my-3 ml-3">会員登録がお済みでない方</h5>
+  <p class="ml-5"><%= link_to 'こちら', new_admin_registration_path %>   　から新規登録を行ってください。</p>
+   </div>
+  </div>
+</div>

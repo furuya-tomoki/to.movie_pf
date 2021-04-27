@@ -17,6 +17,15 @@
            </span>
        </th>
      </tr>
+
+     <tr>
+       <th>
+          <span class=ml-3>
+           <span class="mr-3">いいね一覧</span>
+           <%= link_to '閲覧する', customer_mypage_path(@customer), class: "btn btn-success" %>
+           </span>
+       </th>
+     </tr>
    </table>
   </div>
  </div>
@@ -40,8 +49,10 @@
        <th class="table-secondary">フォロー</th>
       <td><%= render 'public/customers/follow', customer: @customer %></td>
       </tr>
-
     </tbody>
   </div>
  </div>
+
+
+
 

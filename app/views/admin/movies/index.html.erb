@@ -4,51 +4,36 @@
 </div>
 
 
-<div id="slider" class="movie-slider">
+<div class="row">
 <% @movies.each do |movie| %>
-   <%= link_to attachment_image_tag(movie, :image, format: 'jpeg', size: "240x426", fallback: "no_image.jpg"), movie_movie_comments_path(movie) %>
-   <% end %>
+<div class="col-md-2">
+<div class="card">
+	  <%= link_to attachment_image_tag(movie, :image, format: 'jpeg', size: "215x250", fallback: "no_image.jpg"), movie_movie_comments_path(movie) %>
+<div class="card-body text-center">
+<h6 class="card-title">
+  <strong><%= movie.title %></strong>
+  </h6>
+
+<p class="card-text">
+<% if customer_signed_in? %>
+<%= link_to movie_movie_comments_path(movie), class: "button card-footer-item" do %>
+<i class="fas fa-eye"></i>
+<% end %>
+<%= link_to movie_path(movie), class: "button card-footer-item" do %>
+<i class="fas fa-pen"></i>
+<% end %>
+<% elsif admin_signed_in? %>
+<%= link_to movie_movie_comments_path(movie), class: "button card-footer-item" do %>
+レビューを見る
+<% end %>
+<%= link_to edit_admin_movie_path(movie), class: "button card-footer-item" do %>
+作品編集
+<% end %>
+<% end %>
+</p>
+
 </div>
 
-
-
-<section class="section mt-6">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-5">
-        <% @movies.each do |movie| %>
-          <div class="card mb-6">
-            <header class="card-header">
-              <p class="card-header-title">
-                <%= link_to attachment_image_tag(movie, :image, format: 'jpeg', size: "150x200", fallback: "no_image.jpg") %>
-                <%= movie.title %>
-                <%= movie.director %>
-                <%= movie.actor %>
-              </p>
-            </header>
-
-            <footer class="card-footer">
-              <% if customer_signed_in? %>
-               <%= link_to movie_movie_comments_path(movie), class: "button card-footer-item" do %>
-                レビューを見る
-              <% end %>
-              <%= link_to movie_path(movie), class: "button card-footer-item" do %>
-                レビューを書く
-              <% end %>
-
-              <% elsif admin_signed_in? %>
-              <%= link_to movie_movie_comments_path(movie), class: "button card-footer-item" do %>
-                レビューを見る
-              <% end %>
-              <%= link_to edit_admin_movie_path(movie), class: "button card-footer-item" do %>
-                作品編集
-              <% end %>
-              <% end %>
-            </footer>
-
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</section>
+</div>
+</div>
+<% end %>

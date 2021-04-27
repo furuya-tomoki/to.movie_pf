@@ -1,6 +1,13 @@
 class Public::CustomersController < ApplicationController
+
+  def mypage
+    @favorites = Favorite.where(customer_id: current_customer.id)
+
+  end
+
   def show
     @customer = Customer.find(params[:id])
+    @favorites = Favorite.where(customer_id: current_customer.id)
   end
 
   def edit

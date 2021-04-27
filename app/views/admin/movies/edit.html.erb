@@ -1,27 +1,48 @@
-<h2>作品編集</h2>
-
+<div class="container">
+  <div class="row">
+   <div class="col-md-8 mx-auto">
+     <div class="my-3 ">作品編集</div>
 <%= form_with model: @movie, url: {controller: 'admin/movies', action: 'update' }, local:true do |f| %>
-
-<%= f.label :"ジャンル" %>
-<%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank:"  --選択してください--  " %>
+<table class="table table-borderless bl-3">
+  <tr>
+<th class="text-right"><%= f.label :"ジャンル" %></th>
+<th><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank:"  --選択してください--  " %></th>
 <!-- ジャンル入力項目を反映 -->
+</tr>
 
+<tr>
+<th class="text-right"><%= f.label :"作品名" %></th>
+<th><%= f.text_field :title, autofocus: true, autocomplete: "title", placeholder:"作品名", size: 40 %></th>
+</tr>
 
-<%= f.label :"作品名" %>
-<%= f.text_field :title, autofocus: true, autocomplete: "title", placeholder:"作品名", size: 31 %>
+<tr>
+<th class="text-right"><%= f.label :image, "作品画像" %></th>
+<th><%= f.attachment_field :image %></th>
+</tr>
 
-<%= f.label :image, "作品画像" %>
-<%= f.attachment_field :image %>
+<tr>
+<th class="text-right"><%= f.label :"監督名" %></th>
+<th><%= f.text_field :director, autofocus: true, autocomplete: "director", placeholder:"監督名", size: 40 %></th>
+</tr>
 
-<%= f.label :"監督名" %>
-<%= f.text_field :director, autofocus: true, autocomplete: "director", placeholder:"監督名", size: 31 %>
+<tr>
+<th class="text-right"><%= f.label :"主演" %></th>
+<th><%= f.text_field :actor, autofocus: true, autocomplete: "actor", placeholder:"主演", size: 40 %></th>
+</tr>
 
-<%= f.label :"主演" %>
-<%= f.text_field :actor, autofocus: true, autocomplete: "actor", placeholder:"主演", size: 31 %>
+<tr>
+<th class="text-right"><%= f.label :"あらすじ" %></th>
+<th><%= f.text_area :explain, autofocus: true, autocomplete: "explain", placeholder:"あらすじ", size: 40 %></th>
+</tr>
 
-<%= f.label :"あらすじ" %>
-<%= f.text_area :explain, autofocus: true, autocomplete: "explain", placeholder:"あらすじ", size: 31 %>
+<tr>
+  <th></th>
+<th><%= f.submit "変更を保存", class: "btn btn-success" %></th>
+</tr>
 
-<%= f.submit "変更を保存", class: "btn btn-success" %>
-
+</table>
 <% end %>
+
+</div>
+  </div>
+</div>
