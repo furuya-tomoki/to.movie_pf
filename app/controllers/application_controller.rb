@@ -17,6 +17,6 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :image, :encrypted_password])
-    # ユーザー登録+編集時に必要な値
+     # ユーザー登録+編集時に必要な値
   end
 end

@@ -52,7 +52,10 @@
 <th><%= f.text_field :quote, autofocus: true, autocomplete: "引用元", placeholder:"引用元", size: 31 %></th>
 </tr>
 
-
+<tr>
+<th class="text-right"><%= f.label :"豆知識" %></th>
+<th><%= f.text_area :point, autofocus: true, autocomplete: "豆知識", placeholder:"豆知識", size: 31 %></th>
+</tr>
 
 <tr>
 <th class="text-right"><%= f.label :"あらすじ" %></th>
