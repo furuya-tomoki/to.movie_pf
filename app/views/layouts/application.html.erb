@@ -11,29 +11,24 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 　　<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 　　<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
   </head>
-
-   <main>
-  <body>
-    <%= render "layouts/header" %>
-
- <% if flash[:notice] %>
-  <div class="notification is-info">
-    <p class="notice"><%= notice %></p>
-  </div>
-<% end %>
-<% if flash[:alert] %>
-  <div class="notification is-danger">
-    <p class="alert"><%= alert %></p>
-  </div>
-<% end %>
-
+<body>
+  <main>
+    <div class="movie-back">
+     <%= render "layouts/header" %>
+      <% if flash[:notice] %>
+       <div class="notification is-info">
+        <p class="notice"><%= notice %></p>
+       </div>
+      <% end %>
+       <% if flash[:alert] %>
+      <div class="notification is-danger">
+       <p class="alert"><%= alert %></p>
+      </div>
+       <% end %>
     <%= yield %>
-      </main>
-  <footer>
-  <%= render "layouts/footer" %>
-  </footer>
-  </body>
-
+    </div>
+  </main>
+    <%= render "layouts/footer" %>
+</body>
 </html>

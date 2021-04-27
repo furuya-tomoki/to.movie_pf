@@ -30,6 +30,18 @@
     <span>主演:</span>
      <%= @movie.actor %>
     </li>
+    <li>
+   <span>女優:</span>
+     <%= @movie.actres %>
+   </li>
+   <li>
+   <span>キャスト:</span>
+     <%= @movie.cast %>
+   </li>
+   <li>
+   <span>引用元:</span>
+     <%= @movie.quote %>
+   </li>
  </p>
  </div>
 </div>
@@ -51,7 +63,7 @@
           <div class="card-content">
             <div class="content average-rate">
               <div class="star-rating mb-2">
-                <div class="star-rating-front" style="%"><%= '★' * @movie.movie_comments.average(:rate) %></div>
+                <div class="star-rating-front" style="%"><%= '★' * ( @movie.movie_comments.average(:rate).nil? ? 0:@movie.movie_comments.average(:rate)) %></div>
               </div>
               <div class="average-rate-display ml-3 pt-2">
                 <%= @movie.avg_rate %>点（<%= @movie.movie_comments.count %>件のレビュー）

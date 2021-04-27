@@ -20,7 +20,7 @@ class Admin::MovieCommentsController < ApplicationController
     @movie_comment = MovieComment.new(movie_comment_params)
     @movie_comment.customer_id = current_customer.id
     @movie_comment.save
-    redirect_to admin_movies_path
+    redirect_to movie_movie_comments_path(@movie_comment.movie)
   end
 
   def destroy

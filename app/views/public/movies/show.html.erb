@@ -21,7 +21,8 @@
           <div class="card-content">
             <div class="content average-rate">
               <div class="star-rating mb-2">
-                <div class="star-rating-front" style="%"><%= '★' * @movie.movie_comments.average(:rate) %></div>
+                                <div class="star-rating-front" style="%"><%= '★' * ( @movie.movie_comments.average(:rate).nil? ? 0:@movie.movie_comments.average(:rate)) %></div>
+
               </div>
               <div class="average-rate-display ml-3 pt-2">
                 <%= @movie.avg_rate %>点（<%= @movie.movie_comments.count %>件のレビュー）

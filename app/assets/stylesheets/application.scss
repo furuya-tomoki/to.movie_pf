@@ -28,3 +28,15 @@
   padding-top: 40px;
   padding-right: 70px;
 }
+
+.movie-back {
+  height: 100%å; /* 全画面表示 */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-image: url(theater.jpg);
+}
+.footer{
+    position: absolute;/*←絶対位置*/
+    bottom: 0; /*下に固定*/
+}
