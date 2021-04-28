@@ -33,6 +33,9 @@ http://tomovie.jp/
 ## 機能一覧
  https://docs.google.com/spreadsheets/d/1-oV4aTsZE3xKsB5Y0PKfZImq8r-91GSxksPDFInnPRs/edit#gid=0 
 
+<img width="741" alt="スクリーンショット 2021-04-28 22 18 18" src="https://user-images.githubusercontent.com/76623704/116410458-c41cf380-a86f-11eb-8081-822853c7eb25.png">
+
+
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
