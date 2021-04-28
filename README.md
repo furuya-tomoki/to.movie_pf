@@ -1,8 +1,15 @@
-<img width="956" alt="スクリーンショット 2021-03-31 22 25 46" src="https://user-images.githubusercontent.com/76623704/113151507-1d453780-9270-11eb-83f9-7efb11a7e9fd.png">
+<img width="437" alt="to red" src="https://user-images.githubusercontent.com/76623704/116394704-384e9b80-a85e-11eb-859e-3a1baf7dbef5.png">
+
 
 ## サイト概要
-「to.movie」を閲覧することによって、「映画に」興味を持てるサイトです。  
-ユーザー全員が映画レビューやお気に入り登録ができ、人気順にも閲覧できる映画情報サービスです。
+「to.MOVIE」は映画レビューサイトです。  
+評価レビュー機能や作品のお気に入り登録などできます。
+
+
+<img width="1438" alt="スクリーンショット 2021-04-28 22 10 37" src="https://user-images.githubusercontent.com/76623704/116409508-df3b3380-a86e-11eb-9e8d-8cf0841f2b53.png">
+
+## http://tomovie.jp/
+登録しなくても、作品詳細が閲覧できます。
 
 
 ### サイトテーマ
@@ -26,6 +33,9 @@
 ## 機能一覧
  https://docs.google.com/spreadsheets/d/1-oV4aTsZE3xKsB5Y0PKfZImq8r-91GSxksPDFInnPRs/edit#gid=0 
 
+<img width="741" alt="スクリーンショット 2021-04-28 22 18 18" src="https://user-images.githubusercontent.com/76623704/116410458-c41cf380-a86f-11eb-8081-822853c7eb25.png">
+
+
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
@@ -33,6 +43,3 @@
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
-# 使用素材
-SEOSTHEMES  
-https://seosthemes.com/free-wordpress-video-theme/
