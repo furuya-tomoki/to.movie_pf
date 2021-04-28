@@ -14,10 +14,11 @@
  *= require_self
  */
 @import "bootstrap";
+
   // 字幕用フォント
 @font-face {
   font-family: 'cinecaption226.ttf';
-  src: asset-url('/assets/cinecaption226.ttf') format("truetype");
+  src: url('/assets/cinecaption226.ttf') format("truetype");
    font-weight: normal;
   font-style: normal;
 }
