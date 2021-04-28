@@ -1,4 +1,4 @@
-<img width="956" alt="スクリーンショット 2021-03-31 22 25 46" src="https://user-images.githubusercontent.com/76623704/113151507-1d453780-9270-11eb-83f9-7efb11a7e9fd.png">
+<img width="437" alt="to red" src="https://user-images.githubusercontent.com/76623704/116394704-384e9b80-a85e-11eb-859e-3a1baf7dbef5.png">
 
 ## サイト概要
 「to.movie」を閲覧することによって、「映画に」興味を持てるサイトです。  
