@@ -1,7 +1,7 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-danger bg-danger">
    <div class="container">
-    <a class="navbar-brand " href="/"><%= image_tag 'red.png', class: 'icon' %></h1></a>
+    <a class="navbar-brand " href="/"><%= image_tag 'to.red.png', class: 'icon' %></h1></a>
      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarLinks" aria-controls="navbarLinks" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
      </button>
@@ -12,7 +12,7 @@
 <!--カラム_or_cont = 文字列が含まれるものにマッチ-->
 <div class="movie-search">
 <%= search_form_for @q do |f| %>
-  <%= f.search_field :title_or_director_or_actor_cont, placeholder: "作品名・キャスト名", class: "search-input" %>
+  <%= f.search_field :title_or_director_or_actor_or_cast_or_actres_cont, placeholder: "作品・監督・役者名", class: "search-input" %>
   <%= f.submit "検索", class: "search-btn" %>
 <% end %>
 </div>
@@ -33,10 +33,13 @@
 <!--管理者がログイン時 -->
 <% elsif admin_signed_in? %>
   <li class="border border-dark rounded text-dark" style= "padding:10px; margin:10px;">
-    <%= link_to "作品一覧", admin_movies_path, class: "btn btn-outline" %>
+    <%= link_to '作品 登録', new_admin_movie_path, class: 'btn btn-outline'%>
   </li>
   <li class="border border-dark rounded text-dark" style= "padding:10px; margin:10px;">
-    <%= link_to "会員一覧", admin_customers_path, class: "btn btn-outline" %>
+    <%= link_to "作品 一覧", admin_movies_path, class: "btn btn-outline" %>
+  </li>
+  <li class="border border-dark rounded text-dark" style= "padding:10px; margin:10px;">
+    <%= link_to "会員 一覧", admin_customers_path, class: "btn btn-outline" %>
   </li>
   <li class="border border-dark rounded text-dark" style= "padding:10px; margin:10px;">
     <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-outline" %>

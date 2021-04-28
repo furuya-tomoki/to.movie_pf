@@ -2,8 +2,11 @@
  <div class="content">
    <div class="row">
     <div class="col-md-3">
- <%= attachment_image_tag(@movie, :image, format: 'jpeg', size: "150×200", fallback: "no_image.jpg") %>
- <p><%= link_to "※ 引用元", @movie.quote %></p>
+     <%= attachment_image_tag(@movie, :image, format: 'jpeg', size: "150×200", fallback: "no_image.jpg") %>
+      <p>
+       <%= link_to "※ 引用元", @movie.quote %>
+      </p>
+
  <!-- お気に入り -->
 <% if customer_signed_in? %>
    <div id="movie_<%= @movie.id %>" class="favorite-btns_<%= @movie.id %>">
@@ -11,34 +14,38 @@
    </div>
 <% end %>
 <!-- お気に入り -->
+
     </div>
      <div class="col-md-9">
       <div class="text">
        <div class="title">
-     <h3>
-      <strong><%= @movie.title %></strong>
-     </h3>
-   </div>
-
-<p><%= @movie.explain %></p>
-<div class="row">
-     <div class="col-md-3">
- <strong> 監督名</strong>
-<p><%= @movie.director %></p>
-   <strong>キャスト</strong>
-<p><%= @movie.actor %></p>
-<p><%= @movie.actres %></p>
-   <%= @movie.cast %>
-   </div>
-   <div class="col-md-6 mx-5">
-     <h3><strong>豆知識!</h3></strong>
-    <p> <%= @movie.point %></p>
+        <h3>
+         <strong><%= @movie.title %></strong>
+        </h3>
+       </div>
+        <p>
+         <%= @movie.explain %>
+        </p>
+          <div class="row">
+           <div class="col-md-3">
+            <strong>監督名</strong>
+            <p><%= @movie.director %></p>
+            <strong>キャスト</strong>
+            <p><%= @movie.actor %></p>
+            <p><%= @movie.actres %></p>
+            <%= @movie.cast %>
+           </div>
+            <div class="col-md-6 mx-5">
+             <h3>
+              <strong>豆知識!</strong>
+             </h3>
+              <p><%= @movie.point %></p>
+            </div>
+          </div>
+      </div>
      </div>
-</div>
- </div>
-</div>
+   </div>
   </div>
- </div>
 </div>
 
 <section class="section mt-6">
@@ -50,15 +57,15 @@
             <p class="card-header-title">
               <%= @movie.title %>
                <% if customer_signed_in? %>
-<%= link_to movie_path(@movie), class: "button card-footer-item" do %>
-   <i class="fas fa-pen"></i>
- <% end %>
- <% elsif admin_signed_in? %>
- <%= link_to edit_admin_movie_path(@movie), class: "button card-footer-item" do %>
-    <i class="fas fa-edit"></i>
-  <% end %>
-   <% else %>
-      <% end %>
+                <%= link_to movie_path(@movie), class: "button card-footer-item" do %>
+                 <i class="fas fa-pen"></i>
+                <% end %>
+                <% elsif admin_signed_in? %>
+                 <%= link_to edit_admin_movie_path(@movie), class: "button card-footer-item" do %>
+                  <i class="fas fa-edit"></i>
+                <% end %>
+                <% else %>
+                <% end %>
             </p>
           </header>
           <div class="card-content">
@@ -82,20 +89,20 @@
             <% @movie_comments.each do |movie_comment| %>
               <tr>
                 <% if customer_signed_in? %>
-                <td><%= link_to movie_comment.customer.name, customer_path(movie_comment.customer) %></td>
+                  <td><%= link_to movie_comment.customer.name, customer_path(movie_comment.customer) %></td>
                 <% elsif admin_signed_in? %>
-                <td><%= link_to movie_comment.customer.name, customer_path(movie_comment.customer) %></td>
+                  <td><%= link_to movie_comment.customer.name, customer_path(movie_comment.customer) %></td>
                 <% else %>
-                <td><%= movie_comment.customer.name %></td>
+                  <td><%= movie_comment.customer.name %></td>
                 <% end %>
-                <td><%= movie_comment.rate %></td>
-                <td><%= movie_comment.comment %></td>
-                 <% if current_customer == movie_comment.customer %>
-    	<td><%= link_to 'Destroy', movie_movie_comment_path(movie_comment.movie_id, movie_comment.id), class: 'btn-sm btn-danger', method: :delete, local: true %></td>
-    	      <% elsif admin_signed_in? %>
+                  <td><%= movie_comment.rate %></td>
+                  <td><%= movie_comment.comment %></td>
+                <% if current_customer == movie_comment.customer %>
+                	<td><%= link_to 'Destroy', movie_movie_comment_path(movie_comment.movie_id, movie_comment.id), class: 'btn-sm btn-danger', method: :delete, local: true %></td>
+    	          <% elsif admin_signed_in? %>
     	          	<td><%= link_to 'Destroy', movie_movie_comment_path(movie_comment.movie_id, movie_comment.id), class: 'btn-sm btn-danger', method: :delete, local: true %></td>
-<% else %>
-<% end %>
+                <% else %>
+                <% end %>
               </tr>
             <% end %>
           </tbody>
@@ -104,8 +111,7 @@
     </div>
   </div>
 </section>
-
 <div class="text-center">
-<%= link_to "作品一覧に戻る", movies_path %>
+ <%= link_to "作品一覧に戻る", movies_path %>
 </div>
 

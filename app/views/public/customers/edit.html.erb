@@ -1,18 +1,29 @@
-<h2>会員情報編集</h2>
-
+<div class="container">
+<div class="row my-3">
+  <div class="ml-5 pl-4">
+<h3 style="background:#DDDDDD">会員情報編集</h3>
 <%= form_with model: @customer, url: {controller: 'public/customers', action: 'update' }, local:true do |f| %>
 
+    </div>
+    </div>
 
 
-<%= f.label :"名前" %>
-<%= f.text_field :name %>
+<table>
+<tr>
+  <th><%= f.label :"名前" %></th>
+  <th><%= f.text_field :name %></th>
+</tr>
 
+<tr>
+ <th><%= f.label :image %></th>
+ <th><%= f.attachment_field :image, class: "customer_image" %></th>
+</tr>
 
-<%= f.label :image %>
-<%= f.attachment_field :image, class: "customer_image" %>
-
-<%= f.submit "保存する", class:"btn btn-success" %>
-<%= link_to "退会する", unsubscribe_customer_path, method: :get, class:"btn btn-danger" %>
-
+<tr>
+<th><%= f.submit "保存する", class:"btn btn-success" %></th>
+<th><%= link_to "退会する", unsubscribe_customer_path, method: :get, class:"btn btn-danger" %></th>
+</tr>
 
 <% end %>
+</table>
+</div>
