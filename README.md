@@ -1,9 +1,15 @@
 <img width="437" alt="to red" src="https://user-images.githubusercontent.com/76623704/116394704-384e9b80-a85e-11eb-859e-3a1baf7dbef5.png">
 
+
 ## サイト概要
-「to.movie」を閲覧することによって、「映画に」興味を持てるサイトです。  
-ユーザー全員が映画レビューやお気に入り登録ができ、人気順にも閲覧できる映画情報サービスです。
+「to.MOVIE」は映画レビューサイトです。
+評価レビュー機能や作品のお気に入り登録などできます。
+
+
 <img width="1438" alt="スクリーンショット 2021-04-28 22 10 37" src="https://user-images.githubusercontent.com/76623704/116409508-df3b3380-a86e-11eb-9e8d-8cf0841f2b53.png">
+
+http://tomovie.jp/
+登録しなくても、作品詳細が閲覧できます。
 
 
 ### サイトテーマ
