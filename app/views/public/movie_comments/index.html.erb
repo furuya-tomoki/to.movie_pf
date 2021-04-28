@@ -92,7 +92,10 @@
                 <td><%= movie_comment.comment %></td>
                  <% if current_customer == movie_comment.customer %>
     	<td><%= link_to 'Destroy', movie_movie_comment_path(movie_comment.movie_id, movie_comment.id), class: 'btn-sm btn-danger', method: :delete, local: true %></td>
-    	     <% end %>
+    	      <% elsif admin_signed_in? %>
+    	          	<td><%= link_to 'Destroy', movie_movie_comment_path(movie_comment.movie_id, movie_comment.id), class: 'btn-sm btn-danger', method: :delete, local: true %></td>
+<% else %>
+<% end %>
               </tr>
             <% end %>
           </tbody>

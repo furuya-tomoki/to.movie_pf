@@ -24,7 +24,7 @@ class Public::CustomersController < ApplicationController
 
      # 退会処理
   def withdrawal
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
     @customer.update(is_valid: false)
      # is_valid: false = 退会
      # 更新すると退会する
@@ -35,7 +35,7 @@ class Public::CustomersController < ApplicationController
 
      # 退会確認画面
   def unsubscribe
-    @customer = Customer.find(params[:id])
+    @customer = Customer.find_by(params[:id])
   end
 
   private
