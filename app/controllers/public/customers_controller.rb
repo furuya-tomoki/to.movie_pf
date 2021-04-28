@@ -2,7 +2,6 @@ class Public::CustomersController < ApplicationController
 
   def mypage
     @favorites = Favorite.where(customer_id: current_customer.id)
-
   end
 
   def show
@@ -15,28 +14,28 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    @customer = Customer.find(params[:id])
+     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-       redirect_to customer_path
+     redirect_to customer_path
     else
-       render "edit"
+     render "edit"
     end
   end
 
-    # 退会処理
+     # 退会処理
   def withdrawal
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
     @customer.update(is_valid: false)
-    # is_valid: false = 退会
-    # 更新すると退会する
+     # is_valid: false = 退会
+     # 更新すると退会する
     reset_session
-    # session = 登録情報の削除
+     # session = 登録情報の削除
     redirect_to root_path
   end
 
-    # 退会確認画面
+     # 退会確認画面
   def unsubscribe
-    @customer = Customer.find(params[:id])
+    @customer = Customer.find_by(params[:id])
   end
 
   private

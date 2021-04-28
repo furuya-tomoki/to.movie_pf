@@ -4,29 +4,34 @@
 <% @movies.each do |movie| %>
 <div class="col-md-2">
 <div class="card">
-	  <%= link_to attachment_image_tag(movie, :image, format: 'jpeg', size: "215x250", fallback: "no_image.jpg"), movie_movie_comments_path(movie) %>
+	  <%= link_to attachment_image_tag(movie, :image, format: 'jpeg', size: "213x263", fallback: "no_image.jpg"), movie_movie_comments_path(movie) %>
 <div class="card-body text-center">
 <h6 class="card-title">
   <strong><%= movie.title %></strong>
   </h6>
 
 <p class="card-text">
-<% if customer_signed_in? %>
-               <%= link_to movie_movie_comments_path(movie), class: "button card-footer-item" do %>
-              <i class="fas fa-eye"></i>
-              <% end %>
-              <%= link_to movie_path(movie), class: "button card-footer-item" do %>
-              <i class="fas fa-pen"></i>
-              <% end %>
+ <% if customer_signed_in? %>
+  <%= link_to movie_movie_comments_path(movie), class: "button card-footer-item" do %>
+   <i class="fas fa-eye"></i>
+ <% end %>
+  <%= link_to movie_path(movie), class: "button card-footer-item" do %>
+   <i class="fas fa-pen"></i>
+ <% end %>
 
-              <% elsif admin_signed_in? %>
-              <%= link_to movie_movie_comments_path(movie), class: "button card-footer-item" do %>
-                レビューを見る
-              <% end %>
-              <%= link_to edit_admin_movie_path(movie), class: "button card-footer-item" do %>
-                作品編集
-              <% end %>
-              <% end %>
+ <% elsif admin_signed_in? %>
+  <%= link_to movie_movie_comments_path(movie), class: "button card-footer-item" do %>
+   <i class="fas fa-eye"></i>
+ <% end %>
+   <%= link_to edit_admin_movie_path(movie), class: "button card-footer-item" do %>
+    <i class="fas fa-edit"></i>
+  <% end %>
+
+  <% else %>
+  <%= link_to movie_movie_comments_path(movie), class: "button card-footer-item" do %>
+   <i class="fas fa-eye"></i>
+ <% end %>
+   <% end %>
 </p>
 
 </div>

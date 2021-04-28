@@ -20,8 +20,8 @@ class Public::MovieCommentsController < ApplicationController
   def create
     @movie_comment = MovieComment.new(movie_comment_params)
     @movie_comment.customer_id = current_customer.id
-    # movie_comment.customer_id = ログイン中の会員
-    # ログイン中の会員しかコメント保存できない
+     # movie_comment.customer_id = ログイン中の会員
+     # ログイン中の会員しかコメント保存できない
     if @movie_comment.save
       redirect_to movie_movie_comments_path(@movie_comment.movie)
     else
@@ -33,9 +33,9 @@ class Public::MovieCommentsController < ApplicationController
 
   def destroy
     @movie_comment = MovieComment.find(params[:id])
-    @movie_comment.customer_id = current_customer.id
-     # movie_comment.customer_id = ログイン中の会員
+     # movie_comment.customer_id = current_customer ログイン中の会員のみ
      # ログイン中の会員しかコメント削除できない
+     # 管理者が削除できないの不必要
     @movie_comment.destroy
     redirect_to movie_movie_comments_path(@movie_comment.movie)
   end

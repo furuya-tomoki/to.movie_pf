@@ -2,7 +2,8 @@
  <div class="content">
    <div class="row">
     <div class="col-md-3">
- <%= attachment_image_tag(@movie, :image, size: "150×200", fallback: "no_image.jpg") %>
+ <%= attachment_image_tag(@movie, :image, format: 'jpeg', size: "150×200", fallback: "no_image.jpg") %>
+ <p><%= link_to "※ 引用元", @movie.quote %></p>
  <!-- お気に入り -->
 <% if customer_signed_in? %>
    <div id="movie_<%= @movie.id %>" class="favorite-btns_<%= @movie.id %>">
@@ -18,19 +19,22 @@
       <strong><%= @movie.title %></strong>
      </h3>
    </div>
-<p>
-  <%= @movie.explain %>
-</p>
- <p>
-  <li>
-   <span>監督名:</span>
-     <%= @movie.director %>
-   </li>
-   <li>
-    <span>主演:</span>
-     <%= @movie.actor %>
-    </li>
- </p>
+
+<p><%= @movie.explain %></p>
+<div class="row">
+     <div class="col-md-3">
+ <strong> 監督名</strong>
+<p><%= @movie.director %></p>
+   <strong>キャスト</strong>
+<p><%= @movie.actor %></p>
+<p><%= @movie.actres %></p>
+   <%= @movie.cast %>
+   </div>
+   <div class="col-md-6 mx-5">
+     <h3><strong>豆知識!</h3></strong>
+    <p> <%= @movie.point %></p>
+     </div>
+</div>
  </div>
 </div>
   </div>
@@ -45,13 +49,22 @@
           <header class="card-header">
             <p class="card-header-title">
               <%= @movie.title %>
-
+               <% if customer_signed_in? %>
+<%= link_to movie_path(@movie), class: "button card-footer-item" do %>
+   <i class="fas fa-pen"></i>
+ <% end %>
+ <% elsif admin_signed_in? %>
+ <%= link_to edit_admin_movie_path(@movie), class: "button card-footer-item" do %>
+    <i class="fas fa-edit"></i>
+  <% end %>
+   <% else %>
+      <% end %>
             </p>
           </header>
           <div class="card-content">
             <div class="content average-rate">
               <div class="star-rating mb-2">
-                <div class="star-rating-front" style="%"><%= '★' * @movie.movie_comments.average(:rate) %></div>
+                <div class="star-rating-front" style="%"><%= '★' * ( @movie.movie_comments.average(:rate).nil? ? 0:@movie.movie_comments.average(:rate)) %></div>
               </div>
               <div class="average-rate-display ml-3 pt-2">
                 <%= @movie.avg_rate %>点（<%= @movie.movie_comments.count %>件のレビュー）
@@ -68,12 +81,21 @@
           <tbody>
             <% @movie_comments.each do |movie_comment| %>
               <tr>
+                <% if customer_signed_in? %>
                 <td><%= link_to movie_comment.customer.name, customer_path(movie_comment.customer) %></td>
+                <% elsif admin_signed_in? %>
+                <td><%= link_to movie_comment.customer.name, customer_path(movie_comment.customer) %></td>
+                <% else %>
+                <td><%= movie_comment.customer.name %></td>
+                <% end %>
                 <td><%= movie_comment.rate %></td>
                 <td><%= movie_comment.comment %></td>
                  <% if current_customer == movie_comment.customer %>
     	<td><%= link_to 'Destroy', movie_movie_comment_path(movie_comment.movie_id, movie_comment.id), class: 'btn-sm btn-danger', method: :delete, local: true %></td>
-    	     <% end %>
+    	      <% elsif admin_signed_in? %>
+    	          	<td><%= link_to 'Destroy', movie_movie_comment_path(movie_comment.movie_id, movie_comment.id), class: 'btn-sm btn-danger', method: :delete, local: true %></td>
+<% else %>
+<% end %>
               </tr>
             <% end %>
           </tbody>

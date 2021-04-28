@@ -6,8 +6,8 @@ class Admin::MoviesController < ApplicationController
     @q = Movie.ransack(params[:q])
      # params[:q] = ユーザーが記入したキーワード
     @movies = @q.result(distinct: true)
-    # distinct = 重複レコードを一つにまとめる
-    # rusult = レコードリレーションを返す
+     # distinct = 重複レコードを一つにまとめる
+     # rusult = レコードリレーションを返す
   end
 
   def new
@@ -17,7 +17,7 @@ class Admin::MoviesController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
     @movie.save!
-    redirect_to admin_movies_path
+    redirect_to movies_path
   end
 
   def show
@@ -35,15 +35,15 @@ class Admin::MoviesController < ApplicationController
   def update
      @movie = Movie.find(params[:id])
     if @movie.update(movie_params)
-     redirect_to admin_movie_path(@movie)
+     redirect_to movies_path
     else
-      render "edit"
+     render "edit"
     end
   end
 
   private
 
   def movie_params
-    params.require(:movie).permit(:customer_id, :genre_id, :image, :title, :director, :actor, :explain)
+    params.require(:movie).permit(:customer_id, :genre_id, :image, :title, :director, :actor, :explain, :cast, :actres, :quote, :point)
   end
 end
