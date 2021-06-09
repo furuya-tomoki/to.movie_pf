@@ -4,6 +4,7 @@
 
 .video-container {
   position: relative;
+   // 記述する前に配置されていた場所から移動
 }
 
 video {
@@ -17,16 +18,21 @@ video {
 	bottom: 5px;
 	left: 35%;
 	transform: translateX(-50%);
+	 // 各種変形をつかさどるプロパティ「X軸」から-50
 	-webkit-transform: translateX(-50%);
+ 	// 各種変形をつかさどるプロパティ「X軸」から-50
 	text-align: center;
 	color: black;
 	font-size: 30px;
 	font-family: 'cinecaption226.ttf';
 	word-break: keep-all;
+	 // ブラウザーが改行を挿入するかどうかを指定
+	 // keep-all = テキストの改行を許可しない
 	opacity: 0;
+	// 要素の不透明度を設定
 }
 
- // topアニメーション
+ // topアニメーション設定
 .texts p:nth-child(1) { animation: text-anim 5s 0s;}
 .texts p:nth-child(2) { animation: text-anim 5s 5s;}
 .texts p:nth-child(3) { animation: text-anim 5s 10s;}
@@ -41,6 +47,9 @@ video {
 .texts p:nth-child(12) { animation: text-anim 5s 55s;}
 .texts p:nth-child(13) { animation: text-anim 5s 60s;}
 
+// topアニメーションの設定
+// アニメーション開始から終了するまでどのようなアニメーションをするのか指定できるCSS
+// 開始時は透明で、終了時には不透明
 @keyframes text-anim {
 	0%, 100% {opacity: 0;}
 	20%, 80% {opacity: 1;}
@@ -51,6 +60,10 @@ video {
 	color: white;
 	padding-top: 150px;
 }
+
+
+
+
 /* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
 @media screen and (max-width:1024px) {
    body {
